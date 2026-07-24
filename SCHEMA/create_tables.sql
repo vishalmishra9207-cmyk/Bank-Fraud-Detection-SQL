@@ -23,3 +23,20 @@ create table customers (
 
 ) ;
 
+
+CREATE TABLE accounts (
+    account_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    account_number VARCHAR(20) UNIQUE NOT NULL,
+    account_type VARCHAR(20) NOT NULL,
+    branch_code CHAR(20) NOT NULL,
+    balance DECIMAL(15,2) DEFAULT 0.00,
+    account_status VARCHAR(25) DEFAULT 'Active',
+    open_date DATE NOT NULL,
+    closed_date DATE DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_customer
+        FOREIGN KEY (customer_id)
+        REFERENCES customers(customer_id)
+);
