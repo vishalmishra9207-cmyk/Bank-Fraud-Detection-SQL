@@ -90,3 +90,30 @@ ADD CONSTRAINT fk_branch
 FOREIGN KEY (branch_id)
 REFERENCES branches(branch_id);
 
+CREATE TABLE transactions (
+    transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+    account_id INT NOT NULL,
+    reference_number VARCHAR(50) UNIQUE NOT NULL,
+
+    amount DECIMAL(15,2) NOT NULL,
+    transaction_type VARCHAR(25) NOT NULL,
+
+    transaction_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    transaction_status VARCHAR(20) NOT NULL,
+    payment_mode VARCHAR(20) NOT NULL,
+
+    transaction_location VARCHAR(100),
+    receiver_account VARCHAR(20),
+
+    merchant_id INT,
+    device_id INT,
+
+    ip_address VARCHAR(45),
+    is_fraud BOOLEAN DEFAULT FALSE,
+
+    remarks VARCHAR(255),
+
+    CONSTRAINT fk_account
+        FOREIGN KEY (account_id)
+        REFERENCES accounts(account_id)
+);
