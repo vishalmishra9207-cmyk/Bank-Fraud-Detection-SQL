@@ -117,3 +117,62 @@ CREATE TABLE transactions (
         FOREIGN KEY (account_id)
         REFERENCES accounts(account_id)
 );
+
+CREATE TABLE devices (
+    device_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    customer_id INT NOT NULL,
+
+    device_identifier VARCHAR(100) UNIQUE NOT NULL,
+    device_name VARCHAR(100),
+
+    device_type ENUM('Android','iPhone','Web') NOT NULL,
+
+    device_model VARCHAR(50),
+
+    operating_system VARCHAR(30),
+    os_version VARCHAR(20),
+
+    app_version VARCHAR(20),
+
+    device_status VARCHAR(20) DEFAULT 'Active',
+
+    is_trusted BOOLEAN DEFAULT TRUE,
+
+    last_ip_address VARCHAR(45),
+    last_login_city VARCHAR(50),
+
+    last_login TIMESTAMP,
+
+    registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+CONSTRAINT fk_devices_customer
+FOREIGN KEY (customer_id)
+REFERENCES customers(customer_id)
+);
+
+CREATE TABLE merchants (
+    merchant_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    merchant_code VARCHAR(20) UNIQUE NOT NULL,
+    merchant_name VARCHAR(100) NOT NULL,
+
+    merchant_category VARCHAR(50),
+    merchant_type VARCHAR(30),
+
+    contact_number VARCHAR(15) UNIQUE,
+    merchant_email VARCHAR(100) UNIQUE,
+
+    gst_number VARCHAR(20) UNIQUE,
+
+    building_no VARCHAR(20),
+    street VARCHAR(100),
+    city VARCHAR(50),
+    state VARCHAR(50),
+    pincode CHAR(10),
+    country VARCHAR(50),
+
+    merchant_status VARCHAR(20) DEFAULT 'Active',
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
