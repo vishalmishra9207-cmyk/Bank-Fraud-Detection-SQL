@@ -176,3 +176,50 @@ CREATE TABLE merchants (
 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE merchant_devices (
+    merchant_device_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    merchant_id INT NOT NULL,
+
+    device_serial_number VARCHAR(50) UNIQUE NOT NULL,
+    device_model VARCHAR(50),
+
+    merchant_device_type ENUM('POS', 'QR', 'SoundBox', 'mPOS') NOT NULL,
+    merchant_device_status VARCHAR(20) DEFAULT 'Active',
+
+    device_issue_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_service_date DATE,
+
+    CONSTRAINT fk_merchant_devices_merchant
+        FOREIGN KEY (merchant_id)
+        REFERENCES merchants(merchant_id)
+);
+
+CREATE TABLE cards (
+    card_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    account_id INT NOT NULL,
+
+    card_number CHAR(16) UNIQUE NOT NULL,
+    card_holder_name VARCHAR(100),
+
+    card_type VARCHAR(20),
+    card_network ENUM('Visa','RuPay','Mastercard'),
+
+    issue_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    expiry_date DATE,
+
+    card_status VARCHAR(20) DEFAULT 'Active',
+
+    daily_limit DECIMAL(12,2),
+
+    international_usage BOOLEAN DEFAULT FALSE,
+    contactless_enabled BOOLEAN DEFAULT TRUE,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_cards_account
+        FOREIGN KEY (account_id)
+        REFERENCES accounts(account_id)
+);
