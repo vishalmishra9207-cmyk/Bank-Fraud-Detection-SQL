@@ -223,3 +223,68 @@ CREATE TABLE cards (
         FOREIGN KEY (account_id)
         REFERENCES accounts(account_id)
 );
+
+CREATE TABLE beneficiaries (
+    beneficiary_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    customer_id INT NOT NULL,
+
+    beneficiary_name VARCHAR(100) NOT NULL,
+    nickname VARCHAR(50),
+
+    account_number VARCHAR(20) NOT NULL,
+    ifsc_code CHAR(11) NOT NULL,
+
+    bank_name VARCHAR(100),
+    account_type ENUM('Savings','Current'),
+
+    beneficiary_mobile_number VARCHAR(15),
+    beneficiary_email VARCHAR(100),
+    upi_id VARCHAR(100),
+
+    beneficiary_status VARCHAR(20) DEFAULT 'Active',
+    is_verified BOOLEAN DEFAULT FALSE,
+
+    added_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_beneficiary_customer
+        FOREIGN KEY (customer_id)
+        REFERENCES customers(customer_id)
+);
+
+CREATE TABLE employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    employee_code VARCHAR(20) UNIQUE NOT NULL,
+
+    branch_id INT NOT NULL,
+
+    employee_name VARCHAR(100) NOT NULL,
+    gender VARCHAR(20),
+    dob DATE,
+
+    designation VARCHAR(50),
+    department VARCHAR(50),
+
+    mobile_number VARCHAR(15) UNIQUE,
+    email VARCHAR(100) UNIQUE,
+
+    hire_date DATE,
+    salary DECIMAL(10,2),
+
+    emp_house_no VARCHAR(20),
+    emp_street VARCHAR(100),
+    emp_area VARCHAR(100),
+    emp_city VARCHAR(50),
+    emp_state VARCHAR(100),
+    emp_pincode CHAR(6),
+    country VARCHAR(100),
+
+    employee_status VARCHAR(20) DEFAULT 'Active',
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_employee_branch
+        FOREIGN KEY (branch_id)
+        REFERENCES branches(branch_id)
+);
