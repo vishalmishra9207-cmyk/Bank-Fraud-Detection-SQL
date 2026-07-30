@@ -288,3 +288,71 @@ CREATE TABLE employees (
         FOREIGN KEY (branch_id)
         REFERENCES branches(branch_id)
 );
+
+CREATE TABLE fraud_alerts (
+
+    fraud_alert_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    transaction_id INT NOT NULL,
+    account_id INT NOT NULL,
+    customer_id INT NOT NULL,
+
+    alert_type ENUM(
+        'High Amount',
+        'New Device',
+        'Different Location',
+        'Multiple Failed Login',
+        'Suspicious Merchant',
+        'Multiple Transactions'
+    ) NOT NULL,
+
+    risk_score TINYINT UNSIGNED NOT NULL,
+
+    alert_status ENUM(
+        'Pending',
+        'Under Review',
+        'Resolved',
+        'False Positive'
+    ) DEFAULT 'Pending',
+
+    detected_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    detected_location VARCHAR(255),
+
+    resolved_at TIMESTAMP NULL DEFAULT NULL,
+
+    reviewed_by INT DEFAULT NULL,
+
+    action_taken VARCHAR(100),
+
+    remarks VARCHAR(255),
+
+    CONSTRAINT fk_fraud_transaction
+        FOREIGN KEY (transaction_id)
+        REFERENCES transactions(transaction_id),
+
+    CONSTRAINT fk_fraud_account
+        FOREIGN KEY (account_id)
+        REFERENCES accounts(account_id),
+
+    CONSTRAINT fk_fraud_customer
+        FOREIGN KEY (customer_id)
+        REFERENCES customers(customer_id),
+
+    CONSTRAINT fk_fraud_employee
+        FOREIGN KEY (reviewed_by)
+        REFERENCES employees(employee_id)
+);
+
+create table audit_logs(
+audit_id INT  primary KEY AUTO_INCREMENT , 
+employee_id int NOT NULL, 
+table_name varchar(50),
+record_id int NOT NULL,
+action_type varchar(20) ,
+old_value varchar(50),
+new_value varchar(50), 
+action_time varchar(50),
+ip_address varchar(45),
+remarks varchar(200)
+CONSTRAINT fk_employee_id FOREIGN key (employee_id) REFERENCES employees(employee_id),
+);
