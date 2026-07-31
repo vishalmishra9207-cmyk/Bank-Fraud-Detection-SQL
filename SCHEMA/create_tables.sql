@@ -356,3 +356,186 @@ ip_address varchar(45),
 remarks varchar(200)
 CONSTRAINT fk_employee_id FOREIGN key (employee_id) REFERENCES employees(employee_id),
 );
+
+CREATE TABLE login_history (
+
+    login_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    customer_id INT NOT NULL,
+    device_id INT,
+
+    login_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    logout_time TIMESTAMP NULL DEFAULT NULL,
+
+    login_status ENUM(
+        'Success',
+        'Failed',
+        'Blocked'
+    ),
+
+    login_method ENUM(
+        'Password',
+        'OTP',
+        'Fingerprint',
+        'Face ID'
+    ),
+
+    ip_address VARCHAR(45),
+    location VARCHAR(100),
+
+    failed_attempts TINYINT DEFAULT 0,
+
+    session_id VARCHAR(100),
+
+    CONSTRAINT fk_login_customer
+        FOREIGN KEY (customer_id)
+        REFERENCES customers(customer_id),
+
+    CONSTRAINT fk_login_device
+        FOREIGN KEY (device_id)
+        REFERENCES devices(device_id)
+);
+
+CREATE TABLE kyc_documents (
+
+    kyc_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    customer_id INT NOT NULL,
+
+    document_type ENUM(
+        'Aadhaar',
+        'PAN',
+        'Passport',
+        'Driving License',
+        'Voter ID'
+    ),
+
+    document_number VARCHAR(50) UNIQUE NOT NULL,
+
+    issue_date DATE,
+    expiry_date DATE,
+
+    verification_status ENUM(
+        'Verified',
+        'Pending',
+        'Rejected',
+        'Failed'
+    ) DEFAULT 'Pending',
+
+    verified_by INT DEFAULT NULL,
+
+    verification_date TIMESTAMP NULL DEFAULT NULL,
+
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    document_expired BOOLEAN DEFAULT FALSE,
+
+    CONSTRAINT fk_kyc_customer
+        FOREIGN KEY (customer_id)
+        REFERENCES customers(customer_id),
+
+    CONSTRAINT fk_kyc_employee
+        FOREIGN KEY (verified_by)
+        REFERENCES employees(employee_id)
+);
+
+CREATE TABLE notifications (
+
+    notification_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    customer_id INT NOT NULL,
+
+    notification_type ENUM(
+        'Debit',
+        'Credit',
+        'OTP',
+        'Fraud Alert',
+        'KYC',
+        'Promotional',
+        'Loan Update'
+    ),
+
+    title VARCHAR(100),
+
+    message VARCHAR(300),
+
+    channel ENUM(
+        'SMS',
+        'IVRS',
+        'WhatsApp',
+        'App Notification',
+        'E-mail'
+    ),
+
+    sent_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    delivery_status ENUM(
+        'Pending',
+        'Delivered',
+        'Failed'
+    ) DEFAULT 'Pending',
+
+    read_status ENUM(
+        'Read',
+        'Unread'
+    ) DEFAULT 'Unread',
+
+    priority ENUM(
+        'Low',
+        'Medium',
+        'High',
+        'Critical'
+    ) DEFAULT 'Medium',
+
+    reference_id INT,
+
+    CONSTRAINT fk_notification_customer
+        FOREIGN KEY (customer_id)
+        REFERENCES customers(customer_id)
+);
+
+CREATE TABLE loans (
+    loan_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    customer_id INT NOT NULL,
+    account_id INT NOT NULL,
+
+    loan_type ENUM(
+        'Home Loan',
+        'Personal Loan',
+        'Car Loan',
+        'Education Loan',
+        'Business Loan',
+        'Gold Loan'
+    ),
+
+    loan_amount DECIMAL(15,2) NOT NULL,
+    interest_rate DECIMAL(5,2) NOT NULL,
+
+    tenure_months INT NOT NULL,
+    emi_amount DECIMAL(15,2),
+
+    loan_status ENUM(
+        'Pending',
+        'Approved',
+        'Rejected',
+        'Closed'
+    ) DEFAULT 'Pending',
+
+    approved_by INT DEFAULT NULL,
+    approved_date DATE,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_loan_customer
+        FOREIGN KEY (customer_id)
+        REFERENCES customers(customer_id),
+
+    CONSTRAINT fk_loan_account
+        FOREIGN KEY (account_id)
+        REFERENCES accounts(account_id),
+
+    CONSTRAINT fk_loan_employee
+        FOREIGN KEY (approved_by)
+        REFERENCES employees(employee_id)
+);
