@@ -539,3 +539,408 @@ CREATE TABLE loans (
         FOREIGN KEY (approved_by)
         REFERENCES employees(employee_id)
 );
+
+ALTER TABLE customers
+ADD COLUMN customer_status ENUM(
+'Active',
+'Inactive',
+'Blocked'
+) DEFAULT 'Active';
+
+ALTER TABLE customers
+MODIFY COLUMN kyc_status ENUM(
+'Pending',
+'Verified',
+'Rejected'
+) DEFAULT 'Pending';
+
+ALTER TABLE customers
+MODIFY COLUMN gender ENUM(
+'Male',
+'Female',
+'Other'
+);
+
+ALTER TABLE customers
+MODIFY COLUMN country VARCHAR(100) DEFAULT 'India';
+
+ALTER TABLE accounts
+MODIFY COLUMN account_type ENUM(
+'Savings',
+'Current',
+'Salary',
+'Fixed Deposit'
+) NOT NULL;
+
+ALTER TABLE accounts
+MODIFY COLUMN account_status ENUM(
+'Active',
+'Inactive',
+'Frozen',
+'Closed'
+) DEFAULT 'Active';
+
+ALTER TABLE accounts
+ADD CONSTRAINT fk_accounts_branch
+FOREIGN KEY (branch_id)
+REFERENCES branches(branch_id);
+
+ALTER TABLE branches
+ADD CONSTRAINT fk_branches_manager
+FOREIGN KEY (branch_manager_id)
+REFERENCES employees(employee_id);
+
+ALTER TABLE branches
+ADD CONSTRAINT uq_branch_contact
+UNIQUE (contact_number);
+
+ALTER TABLE branches
+ADD CONSTRAINT uq_branch_email
+UNIQUE (branch_email);
+
+ALTER TABLE transactions
+MODIFY COLUMN transaction_type ENUM(
+'Credit',
+'Debit',
+'Transfer',
+'Withdrawal',
+'Deposit',
+'Refund'
+) NOT NULL;
+
+ALTER TABLE transactions
+MODIFY COLUMN transaction_status ENUM(
+'Pending',
+'Success',
+'Failed',
+'Reversed'
+) DEFAULT 'Pending';
+
+ALTER TABLE transactions
+MODIFY COLUMN payment_mode ENUM(
+'UPI',
+'NEFT',
+'RTGS',
+'IMPS',
+'Card',
+'Cash',
+'Cheque',
+'Net Banking'
+) NOT NULL;
+
+ALTER TABLE transactions
+CHANGE COLUMN receiver_account receiver_account_id INT;
+
+ALTER TABLE transactions
+ADD CONSTRAINT fk_transactions_receiver
+FOREIGN KEY (receiver_account_id)
+REFERENCES accounts(account_id);
+
+ALTER TABLE transactions
+ADD CONSTRAINT fk_transactions_merchant
+FOREIGN KEY (merchant_id)
+REFERENCES merchants(merchant_id);
+
+ALTER TABLE transactions
+ADD CONSTRAINT fk_transactions_device
+FOREIGN KEY (device_id)
+REFERENCES devices(device_id);
+
+ALTER TABLE transactions
+ADD COLUMN risk_score INT DEFAULT 0;
+
+ALTER TABLE devices
+MODIFY COLUMN device_status ENUM(
+'Active',
+'Blocked',
+'Inactive'
+) DEFAULT 'Active';
+
+ALTER TABLE devices
+ADD COLUMN registered_from ENUM(
+'Mobile App',
+'Internet Banking',
+'Branch'
+) DEFAULT 'Mobile App';
+
+ALTER TABLE devices
+ADD COLUMN failed_login_attempts INT DEFAULT 0;
+
+ALTER TABLE devices
+ADD COLUMN blocked_at TIMESTAMP NULL DEFAULT NULL;
+
+ALTER TABLE merchants
+MODIFY COLUMN merchant_category ENUM(
+'Retail',
+'Grocery',
+'Restaurant',
+'Fuel',
+'Healthcare',
+'E-commerce',
+'Travel',
+'Entertainment',
+'Education',
+'Utilities'
+);
+
+ALTER TABLE merchants
+MODIFY COLUMN merchant_type ENUM(
+'Individual',
+'Business',
+'Corporate'
+);
+
+ALTER TABLE merchants
+MODIFY COLUMN merchant_status ENUM(
+'Active',
+'Inactive',
+'Suspended',
+'Blocked'
+) DEFAULT 'Active';
+
+ALTER TABLE merchant_devices
+MODIFY COLUMN merchant_device_status ENUM(
+'Active',
+'Inactive',
+'Blocked',
+'Lost',
+'Damaged',
+'Under Maintenance'
+) DEFAULT 'Active';
+
+ALTER TABLE merchant_devices
+ADD COLUMN branch_id INT;
+
+ALTER TABLE merchant_devices
+ADD CONSTRAINT fk_merchant_devices_branch
+FOREIGN KEY (branch_id)
+REFERENCES branches(branch_id);
+
+ALTER TABLE merchant_devices
+ADD COLUMN warranty_expiry DATE;
+
+ALTER TABLE merchant_devices
+ADD COLUMN last_used_at TIMESTAMP NULL DEFAULT NULL;
+
+ALTER TABLE merchant_devices
+ADD COLUMN firmware_version VARCHAR(20);
+
+ALTER TABLE cards
+MODIFY COLUMN card_type ENUM(
+'Debit',
+'Credit',
+'Prepaid',
+'Virtual'
+);
+
+ALTER TABLE cards
+MODIFY COLUMN card_status ENUM(
+'Active',
+'Inactive',
+'Blocked',
+'Expired',
+'Hotlisted'
+) DEFAULT 'Active';
+
+ALTER TABLE cards
+ADD COLUMN block_reason VARCHAR(100);
+
+ALTER TABLE beneficiaries
+MODIFY COLUMN beneficiary_status ENUM(
+'Active',
+'Inactive',
+'Blocked'
+) DEFAULT 'Active';
+
+ALTER TABLE beneficiaries
+ADD CONSTRAINT uq_customer_beneficiary
+UNIQUE (
+customer_id,
+account_number,
+ifsc_code
+);
+
+ALTER TABLE beneficiaries
+ADD COLUMN verified_at TIMESTAMP NULL DEFAULT NULL;
+
+ALTER TABLE beneficiaries
+ADD COLUMN added_via ENUM(
+'Mobile App',
+'Internet Banking',
+'Branch'
+) DEFAULT 'Mobile App';
+
+ALTER TABLE employees
+MODIFY COLUMN gender ENUM(
+'Male',
+'Female',
+'Other'
+);
+
+ALTER TABLE employees
+MODIFY COLUMN employee_status ENUM(
+'Active',
+'Inactive',
+'Suspended',
+'Resigned'
+) DEFAULT 'Active';
+
+ALTER TABLE employees
+MODIFY COLUMN country VARCHAR(100)
+DEFAULT 'India';
+
+ALTER TABLE employees
+ADD COLUMN manager_id INT;
+
+ALTER TABLE employees
+ADD CONSTRAINT fk_employee_manager
+FOREIGN KEY (manager_id)
+REFERENCES employees(employee_id);
+
+ALTER TABLE employees
+ADD COLUMN exit_date DATE;
+
+ALTER TABLE fraud_alerts
+ADD COLUMN priority ENUM(
+'Low',
+'Medium',
+'High',
+'Critical'
+) DEFAULT 'Medium';
+
+ALTER TABLE fraud_alerts
+ADD COLUMN fraud_confirmed BOOLEAN DEFAULT FALSE;
+
+ALTER TABLE fraud_alerts
+ADD COLUMN resolution_reason VARCHAR(255);
+
+ALTER TABLE fraud_alerts
+ADD CONSTRAINT chk_risk_score
+CHECK (risk_score BETWEEN 0 AND 100);
+
+CREATE TABLE audit_logs (
+
+    audit_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    employee_id INT NOT NULL,
+
+    table_name VARCHAR(50) NOT NULL,
+
+    record_id INT NOT NULL,
+
+    action_type ENUM(
+        'INSERT',
+        'UPDATE',
+        'DELETE'
+    ) NOT NULL,
+
+    old_value TEXT,
+    new_value TEXT,
+
+    action_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    action_source ENUM(
+        'Branch',
+        'Mobile App',
+        'Internet Banking',
+        'Admin Portal',
+        'API'
+    ) DEFAULT 'Branch',
+
+    device_id INT DEFAULT NULL,
+
+    session_id VARCHAR(100),
+
+    ip_address VARCHAR(45),
+
+    remarks VARCHAR(255),
+
+    CONSTRAINT fk_audit_employee
+        FOREIGN KEY (employee_id)
+        REFERENCES employees(employee_id),
+
+    CONSTRAINT fk_audit_device
+        FOREIGN KEY (device_id)
+        REFERENCES devices(device_id)
+
+);
+
+ALTER TABLE login_history
+ADD COLUMN login_city VARCHAR(50),
+ADD COLUMN login_state VARCHAR(50),
+ADD COLUMN login_country VARCHAR(50);
+
+ALTER TABLE login_history
+ADD COLUMN logout_reason ENUM(
+'User Logout',
+'Session Timeout',
+'Forced Logout'
+);
+
+ALTER TABLE login_history
+ADD COLUMN is_suspicious BOOLEAN DEFAULT FALSE;
+
+ALTER TABLE kyc_documents
+ADD CONSTRAINT uq_customer_document
+UNIQUE (
+customer_id,
+document_type
+);
+
+ALTER TABLE kyc_documents
+ADD COLUMN uploaded_via ENUM(
+'Branch',
+'Mobile App',
+'Internet Banking'
+) DEFAULT 'Mobile App';
+
+ALTER TABLE kyc_documents
+ADD COLUMN rejection_reason VARCHAR(255);
+
+ALTER TABLE kyc_documents
+ADD COLUMN document_path VARCHAR(255);
+
+ALTER TABLE notifications
+ADD COLUMN reference_type ENUM(
+'Transaction',
+'Loan',
+'Fraud Alert',
+'KYC',
+'Card',
+'Account'
+);
+
+ALTER TABLE notifications
+ADD COLUMN read_at TIMESTAMP NULL DEFAULT NULL;
+
+ALTER TABLE notifications
+ADD COLUMN retry_count TINYINT DEFAULT 0;
+
+ALTER TABLE notifications
+ADD COLUMN expires_at TIMESTAMP NULL DEFAULT NULL;
+
+ALTER TABLE loans
+ADD COLUMN loan_start_date DATE AFTER emi_amount,
+ADD COLUMN loan_end_date DATE AFTER loan_start_date;
+
+ALTER TABLE loans
+ADD COLUMN outstanding_balance DECIMAL(15,2);
+
+ALTER TABLE loans
+ADD COLUMN paid_emi_count INT DEFAULT 0;
+
+ALTER TABLE loans
+ADD COLUMN next_emi_date DATE;
+
+ALTER TABLE loans
+ADD COLUMN rejection_reason VARCHAR(255);
+
+ALTER TABLE loans
+MODIFY COLUMN loan_status ENUM(
+'Pending',
+'Approved',
+'Rejected',
+'Active',
+'Closed',
+'Defaulted'
+) DEFAULT 'Pending';
