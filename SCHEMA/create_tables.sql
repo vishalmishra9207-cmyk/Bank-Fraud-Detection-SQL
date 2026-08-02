@@ -944,3 +944,38 @@ MODIFY COLUMN loan_status ENUM(
 'Closed',
 'Defaulted'
 ) DEFAULT 'Pending';
+
+CREATE INDEX idx_transactions_account
+ON transactions(account_id);
+
+CREATE INDEX idx_transactions_time
+ON transactions(transaction_time);
+
+CREATE INDEX idx_transactions_status
+ON transactions(transaction_status);
+
+CREATE INDEX idx_fraud_status
+ON fraud_alerts(alert_status);
+
+CREATE INDEX idx_fraud_score
+ON fraud_alerts(risk_score);
+
+CREATE INDEX idx_customer_city
+ON customers(city);
+
+CREATE INDEX idx_customer_mobile
+ON customers(mobile_number);
+
+CREATE INDEX idx_login_customer
+ON login_history(customer_id);
+
+CREATE INDEX idx_login_time
+ON login_history(login_time);
+
+SHOW INDEX FROM customers;
+
+SHOW INDEX FROM accounts;
+
+SHOW INDEX FROM transactions;
+
+SHOW INDEX FROM fraud_alerts;
