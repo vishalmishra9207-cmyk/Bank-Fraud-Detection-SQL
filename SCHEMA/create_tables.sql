@@ -979,3 +979,28 @@ SHOW INDEX FROM accounts;
 SHOW INDEX FROM transactions;
 
 SHOW INDEX FROM fraud_alerts;
+
+CREATE VIEW customer_account_summary AS
+SELECT
+    c.customer_id,
+    c.customer_name,
+    a.account_number,
+    a.account_type,
+    a.balance,
+    a.account_status
+FROM customers c
+JOIN accounts a
+ON c.customer_id = a.customer_id;
+
+CREATE VIEW active_customers AS
+SELECT
+    c.customer_id,
+    c.customer_name,
+    c.mobile_number,
+    c.email,
+    a.account_number,
+    a.balance
+FROM customers c
+JOIN accounts a
+ON c.customer_id = a.customer_id
+WHERE a.account_status = 'Active';
