@@ -1004,3 +1004,85 @@ FROM customers c
 JOIN accounts a
 ON c.customer_id = a.customer_id
 WHERE a.account_status = 'Active';
+
+CREATE VIEW high_balance_accounts AS
+SELECT
+    c.customer_name,
+    a.account_number,
+    a.account_type,
+    a.balance
+FROM customers c
+JOIN accounts a
+ON c.customer_id = a.customer_id
+WHERE a.balance > 100000;
+
+CREATE VIEW transaction_summary AS
+SELECT
+    c.customer_name,
+    a.account_number,
+    t.transaction_id,
+    t.amount,
+    t.transaction_type,
+    t.transaction_status,
+    t.transaction_time
+FROM customers c
+JOIN accounts a
+ON c.customer_id = a.customer_id
+JOIN transactions t
+ON a.account_id = t.account_id;
+
+CREATE VIEW fraud_alert_summary AS
+SELECT
+    c.customer_name,
+    a.account_number,
+    t.transaction_id,
+    t.amount,
+    f.alert_type,
+    f.risk_score,
+    f.alert_status
+FROM customers c
+JOIN accounts a
+ON c.customer_id = a.customer_id
+JOIN transactions t
+ON a.account_id = t.account_id
+JOIN fraud_alerts f
+ON t.transaction_id = f.transaction_id;
+
+CREATE VIEW customer_login_summary AS
+SELECT
+    c.customer_name,
+    l.login_time,
+    l.login_status,
+    d.device_name,
+    l.location
+FROM customers c
+JOIN login_history l
+ON c.customer_id = l.customer_id
+JOIN devices d
+ON d.device_id = l.device_id;
+
+CREATE VIEW loan_summary AS
+SELECT
+    c.customer_name,
+    l.loan_type,
+    l.loan_amount,
+    l.interest_rate,
+    l.emi_amount,
+    l.loan_status,
+    l.approved_date
+FROM customers c
+JOIN loans l
+ON c.customer_id = l.customer_id;
+
+CREATE VIEW pending_kyc_customers AS
+SELECT
+    c.customer_name,
+    c.mobile_number,
+    k.document_type,
+    k.document_number,
+    k.verification_status,
+    k.uploaded_at
+FROM customers c
+JOIN kyc_documents k
+ON c.customer_id = k.customer_id
+WHERE k.verification_status = 'Pending';
