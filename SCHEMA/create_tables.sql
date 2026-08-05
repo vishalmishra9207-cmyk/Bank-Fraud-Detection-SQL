@@ -1086,3 +1086,145 @@ FROM customers c
 JOIN kyc_documents k
 ON c.customer_id = k.customer_id
 WHERE k.verification_status = 'Pending';
+
+--  triggers 
+
+DELIMITER $$
+
+CREATE TRIGGER trg_customer_mobile_audit
+
+AFTER UPDATE
+ON customers
+
+FOR EACH ROW
+
+BEGIN
+
+    INSERT INTO bank_audit_logs (
+        employee_id,
+        table_name,
+        record_id,
+        action_type,
+        old_value,
+        new_value,
+        remarks
+    )
+    VALUES (
+        NULL,
+        'customers',
+        NEW.customer_id,
+        'UPDATE',
+        OLD.mobile_number,
+        NEW.mobile_number,
+        'Customer mobile updated'
+    );
+
+END $$
+
+DELIMITER ;
+
+
+
+DELIMITER $$
+
+CREATE TRIGGER trg_high_amount_fraud
+
+AFTER INSERT
+ON transactions
+
+FOR EACH ROW
+
+BEGIN
+
+    DECLARE v_customer_id INT;
+
+    SELECT customer_id
+    INTO v_customer_id
+    FROM accounts
+    WHERE account_id = NEW.account_id;
+
+    IF NEW.amount > 100000 THEN
+
+        INSERT INTO fraud_alerts
+        (
+            transaction_id,
+            account_id,
+            customer_id,
+            alert_type,
+            risk_score,
+            detected_location
+        )
+
+        VALUES
+        (
+            NEW.transaction_id,
+            NEW.account_id,
+            v_customer_id,
+            'High Amount',
+            90,
+            NEW.transaction_location
+        );
+
+    END IF;
+
+END $$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+CREATE TRIGGER trg_update_account_balance
+
+AFTER INSERT
+ON transactions
+
+FOR EACH ROW
+
+BEGIN
+
+    IF NEW.transaction_type = 'Credit' THEN
+
+        UPDATE accounts
+        SET balance = balance + NEW.amount
+        WHERE account_id = NEW.account_id;
+
+    ELSEIF NEW.transaction_type = 'Debit' THEN
+
+        UPDATE accounts
+        SET balance = balance - NEW.amount
+        WHERE account_id = NEW.account_id;
+
+    END IF;
+
+END $$
+
+DELIMITER ;
+
+ALTER TABLE customers
+ADD COLUMN login_status ENUM('Active','Blocked')
+DEFAULT 'Active';
+
+DELIMITER $$
+
+CREATE TRIGGER trg_block_customer_login
+
+AFTER INSERT
+ON login_history
+
+FOR EACH ROW
+
+BEGIN
+
+    IF NEW.login_status = 'Failed'
+       AND NEW.failed_attempts >= 3 THEN
+
+        UPDATE customers
+        SET login_status = 'Blocked'
+        WHERE customer_id = NEW.customer_id;
+
+    END IF;
+
+END $$
+
+DELIMITER ;
