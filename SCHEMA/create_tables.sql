@@ -1228,3 +1228,404 @@ BEGIN
 END $$
 
 DELIMITER ;
+
+-- store procedure -- 
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_show_all_customers()
+
+BEGIN
+
+    SELECT *
+    FROM customers;
+
+END $$
+
+DELIMITER ;
+
+CALL sp_show_all_customers();
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_register_customer(
+
+IN p_customer_name VARCHAR(100),
+IN p_mobile_number VARCHAR(15),
+IN p_email VARCHAR(100),
+IN p_account_type VARCHAR(20),
+IN p_initial_balance DECIMAL(15,2)
+
+)
+
+BEGIN
+
+    INSERT INTO customers
+    (
+        customer_name,
+        mobile_number,
+        email
+    )
+
+    VALUES
+    (
+        p_customer_name,
+        p_mobile_number,
+        p_email
+    );
+
+    INSERT INTO accounts
+    (
+        customer_id,
+        account_number,
+        account_type,
+        balance,
+        account_status
+    )
+
+    VALUES
+    (
+        LAST_INSERT_ID(),
+        CONCAT('ACC', FLOOR(100000 + RAND()*900000)),
+        p_account_type,
+        p_initial_balance,
+        'Active'
+    );
+
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_deposit_money(
+
+    IN p_account_id INT,
+    IN p_amount DECIMAL(15,2)
+
+)
+
+BEGIN
+
+    DECLARE v_customer_id INT;
+
+    -- Customer ID nikalo
+    SELECT customer_id
+    INTO v_customer_id
+    FROM accounts
+    WHERE account_id = p_account_id;
+
+    -- Account Balance Update
+    UPDATE accounts
+    SET balance = balance + p_amount
+    WHERE account_id = p_account_id;
+
+    -- Transaction Entry
+    INSERT INTO transactions
+    (
+        account_id,
+        reference_number,
+        transaction_type,
+        amount,
+        transaction_status
+    )
+    VALUES
+    (
+        p_account_id,
+        CONCAT('TXN', FLOOR(100000000 + RAND() * 900000000)),
+        'Credit',
+        p_amount,
+        'Success'
+    );
+
+    -- Notification
+    INSERT INTO notifications
+    (
+        customer_id,
+        notification_type,
+        title,
+        message,
+        channel,
+        delivery_status
+    )
+    VALUES
+    (
+        v_customer_id,
+        'Credit',
+        'Amount Deposited',
+        CONCAT('₹', p_amount, ' has been credited to your account.'),
+        'App Notification',
+        'Delivered'
+    );
+
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_withdraw_money(
+
+    IN p_account_id INT,
+    IN p_amount DECIMAL(15,2)
+
+)
+
+BEGIN
+
+    DECLARE v_balance DECIMAL(15,2);
+    DECLARE v_customer_id INT;
+
+    SELECT balance, customer_id
+    INTO v_balance, v_customer_id
+    FROM accounts
+    WHERE account_id = p_account_id;
+
+    IF v_balance >= p_amount THEN
+
+        UPDATE accounts
+        SET balance = balance - p_amount
+        WHERE account_id = p_account_id;
+
+        INSERT INTO transactions
+        (
+            account_id,
+            reference_number,
+            transaction_type,
+            amount,
+            transaction_status
+        )
+        VALUES
+        (
+            p_account_id,
+            CONCAT('TXN', FLOOR(100000000 + RAND()*900000000)),
+            'Debit',
+            p_amount,
+            'Success'
+        );
+
+        INSERT INTO notifications
+        (
+            customer_id,
+            notification_type,
+            title,
+            message,
+            channel,
+            delivery_status
+        )
+        VALUES
+        (
+            v_customer_id,
+            'Debit',
+            'Amount Debited',
+            CONCAT('₹',p_amount,' has been debited from your account.'),
+            'App Notification',
+            'Delivered'
+        );
+
+    ELSE
+
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT='Insufficient Balance';
+
+    END IF;
+
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_transfer_money(
+
+    IN p_sender_account INT,
+    IN p_receiver_account INT,
+    IN p_amount DECIMAL(15,2)
+
+)
+
+BEGIN
+
+    DECLARE v_sender_balance DECIMAL(15,2);
+
+    START TRANSACTION;
+
+    SELECT balance
+    INTO v_sender_balance
+    FROM accounts
+    WHERE account_id=p_sender_account;
+
+    IF v_sender_balance >= p_amount THEN
+
+        UPDATE accounts
+        SET balance=balance-p_amount
+        WHERE account_id=p_sender_account;
+
+        UPDATE accounts
+        SET balance=balance+p_amount
+        WHERE account_id=p_receiver_account;
+
+        INSERT INTO transactions
+        (
+            account_id,
+            reference_number,
+            transaction_type,
+            amount,
+            transaction_status
+        )
+
+        VALUES
+
+        (
+            p_sender_account,
+            CONCAT('TXN',FLOOR(100000000+RAND()*900000000)),
+            'Debit',
+            p_amount,
+            'Success'
+        ),
+
+        (
+            p_receiver_account,
+            CONCAT('TXN',FLOOR(100000000+RAND()*900000000)),
+            'Credit',
+            p_amount,
+            'Success'
+        );
+
+        COMMIT;
+
+    ELSE
+
+        ROLLBACK;
+
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT='Insufficient Balance';
+
+    END IF;
+
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_generate_fraud_report()
+
+BEGIN
+
+SELECT
+
+c.customer_name,
+a.account_number,
+t.transaction_id,
+t.amount,
+f.alert_type,
+f.risk_score,
+f.alert_status
+
+FROM fraud_alerts f
+
+JOIN transactions t
+ON f.transaction_id=t.transaction_id
+
+JOIN accounts a
+ON t.account_id=a.account_id
+
+JOIN customers c
+ON a.customer_id=c.customer_id;
+
+END $$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_block_customer(
+
+IN p_customer_id INT
+
+)
+
+BEGIN
+
+UPDATE customers
+SET login_status='Blocked'
+WHERE customer_id=p_customer_id;
+
+INSERT INTO notifications(
+
+customer_id,
+notification_type,
+title,
+message,
+channel,
+delivery_status
+
+)
+
+VALUES(
+
+p_customer_id,
+'Fraud Alert',
+'Account Blocked',
+'Your Internet Banking has been blocked due to suspicious activity.',
+'App Notification',
+'Delivered'
+
+);
+
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_approve_loan(
+
+IN p_loan_id INT,
+IN p_employee_id INT
+
+)
+
+BEGIN
+
+UPDATE loans
+
+SET
+
+loan_status='Approved',
+approved_by=p_employee_id,
+approved_date=CURDATE()
+
+WHERE loan_id=p_loan_id;
+
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_verify_kyc(
+
+IN p_kyc_id INT,
+IN p_employee_id INT
+
+)
+
+BEGIN
+
+UPDATE kyc_documents
+
+SET
+
+verification_status='Verified',
+verified_by=p_employee_id,
+verification_date=NOW()
+
+WHERE kyc_id=p_kyc_id;
+
+END $$
+
+DELIMITER ;
+
