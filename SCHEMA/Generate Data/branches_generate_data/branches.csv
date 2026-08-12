@@ -1,0 +1,21 @@
+branch_code,branch_manager_id,building_no,street,area,city,state,pincode,ifsc_code,contact_number,branch_email,branch_status,created_at,contact_number_branch
+BR0001,,4,Anand Chowk,Ville,Delhi,Delhi,110001,VMBK000001,7941238031,branch001@vmbank.com,Active,2025-07-19 12:07:29,7941238031
+BR0002,,58,Char Zila,Ville,Mumbai,Maharashtra,400001,VMBK000002,9308037403,branch002@vmbank.com,Active,2025-03-28 03:53:54,9308037403
+BR0003,,571,Ghosh Marg,Ville,Pune,Maharashtra,411001,VMBK000003,8939588267,branch003@vmbank.com,Active,2024-03-09 22:07:24,8939588267
+BR0004,,163,Muni Zila,Ville,Lucknow,Uttar Pradesh,226001,VMBK000004,7846523755,branch004@vmbank.com,Active,2022-06-09 02:19:06,7846523755
+BR0005,,228,Raghavan Street,Ville,Kanpur,Uttar Pradesh,208001,VMBK000005,7124400732,branch005@vmbank.com,Active,2023-01-03 18:04:25,7124400732
+BR0006,,934,Bhatnagar Chowk,Ville,Jaipur,Rajasthan,302001,VMBK000006,8340578157,branch006@vmbank.com,Active,2021-08-20 05:49:38,8340578157
+BR0007,,425,Savant Road,Ville,Kota,Rajasthan,324001,VMBK000007,9921593372,branch007@vmbank.com,Active,2025-11-17 18:16:35,9921593372
+BR0008,,158,Dara Marg,Ville,Bengaluru,Karnataka,560001,VMBK000008,7457995380,branch008@vmbank.com,Active,2023-04-05 18:15:13,7457995380
+BR0009,,269,Dugal Marg,Ville,Hyderabad,Telangana,500001,VMBK000009,9782141720,branch009@vmbank.com,Active,2022-12-14 08:46:31,9782141720
+BR0010,,232,Swaminathan Ganj,Ville,Chennai,Tamil Nadu,600001,VMBK000010,8237668388,branch010@vmbank.com,Active,2023-10-23 04:58:17,8237668388
+BR0011,,376,Kashyap Zila,Ville,Kolkata,West Bengal,700001,VMBK000011,9662850307,branch011@vmbank.com,Active,2026-07-23 06:31:55,9662850307
+BR0012,,910,Garde Zila,Ville,Ahmedabad,Gujarat,380001,VMBK000012,8232036555,branch012@vmbank.com,Active,2026-03-09 13:24:05,8232036555
+BR0013,,867,Tandon Path,Ville,Bhopal,Madhya Pradesh,462001,VMBK000013,9407384697,branch013@vmbank.com,Active,2024-05-24 12:12:13,9407384697
+BR0014,,142,Chhabra Ganj,Ville,Patna,Bihar,800001,VMBK000014,9363863251,branch014@vmbank.com,Active,2025-07-29 11:11:36,9363863251
+BR0015,,642,Lal Street,Ville,Indore,Madhya Pradesh,452001,VMBK000015,7943892314,branch015@vmbank.com,Active,2026-03-11 07:28:40,7943892314
+BR0016,,856,Subramanian Street,Ville,Noida,Uttar Pradesh,201301,VMBK000016,9173966852,branch016@vmbank.com,Active,2026-01-05 19:45:06,9173966852
+BR0017,,886,Suri Zila,Ville,Gurugram,Haryana,122001,VMBK000017,9665484664,branch017@vmbank.com,Active,2022-06-01 08:01:32,9665484664
+BR0018,,614,Jhaveri,Ville,Surat,Gujarat,395001,VMBK000018,7636041815,branch018@vmbank.com,Active,2021-10-30 00:10:37,7636041815
+BR0019,,657,Khosla Zila,Ville,Nagpur,Maharashtra,440001,VMBK000019,7169533011,branch019@vmbank.com,Inactive,2026-07-10 13:46:30,7169533011
+BR0020,,123,Deshpande Ganj,Ville,Chandigarh,Chandigarh,160001,VMBK000020,9299201712,branch020@vmbank.com,Active,2024-04-15 02:50:15,9299201712
