@@ -1,0 +1,301 @@
+merchant_code,merchant_name,merchant_category,merchant_type,contact_number,merchant_email,gst_number,building_no,street,city,state,pincode,country,merchant_status,created_at,risk_level
+MER00001,Ramachandran PLC,Restaurant,Individual,8976878171,ramachandranplc1@merchant.com,245646436891ZS,56,Singhal Nagar,Vijayanagaram,Nagaland,424427,India,Active,2020-01-28,Low
+MER00002,Suri and Sons,Restaurant,Business,8716073649,suriandsons2@merchant.com,468291061591ZC,289,Ahuja Nagar,Phusro,Kerala,484566,India,Active,2026-01-18,Low
+MER00003,"Nagy, Mitra and Patil",E-commerce,Individual,7242407454,nagymitraandpatil3@merchant.com,995654568061ZT,719,Chakraborty Nagar,Pondicherry,Arunachal Pradesh,313215,India,Active,2023-11-02,Low
+MER00004,"Pradhan, Bhavsar and Mital",Utilities,Business,9759981119,pradhanbhavsarandmital4@merchant.com,782316289291ZD,799,Wali Marg,Udupi,Sikkim,470998,India,Active,2020-10-10,Low
+MER00005,"Doctor, Nath and Bal",E-commerce,Individual,9177519018,doctornathandbal5@merchant.com,293929404281ZV,493,Mammen Street,Barasat,Uttar Pradesh,314898,India,Active,2018-09-19,Low
+MER00006,Dayal-Chaudhry,E-commerce,Business,8120463439,dayal-chaudhry6@merchant.com,136209279421ZX,324,Zachariah Zila,Dhule,Maharashtra,985431,India,Active,2023-11-03,Low
+MER00007,Dara and Sons,Fuel,Business,7890298803,daraandsons7@merchant.com,968818767991ZZ,193,Sami Chowk,Bilaspur,Jharkhand,536929,India,Active,2026-07-08,Low
+MER00008,"Sridhar, Singhal and Pillai",Retail,Business,8799370211,sridharsinghalandpillai8@merchant.com,265797879261ZW,974,Sharaf Circle,Chinsurah,Haryana,717006,India,Active,2024-07-12,Low
+MER00009,Malhotra-Shanker,Retail,Business,7765389111,malhotra-shanker9@merchant.com,828131036101ZI,362,Bora Marg,Akola,Mizoram,921183,India,Active,2024-04-07,Medium
+MER00010,Nanda-Shukla,Retail,Business,8271702301,nanda-shukla10@merchant.com,904168175801ZK,190,Muni Path,Agra,Meghalaya,624035,India,Active,2019-11-24,Low
+MER00011,Mohan-Mannan,Grocery,Corporate,7230919932,mohan-mannan11@merchant.com,607155893991Z8,109,Brahmbhatt Zila,Ludhiana,Gujarat,271532,India,Active,2023-10-17,Low
+MER00012,Murthy-Iyengar,Travel,Business,9989792700,murthy-iyengar12@merchant.com,897231601451ZD,427,Bhavsar Path,Tadipatri,Odisha,119283,India,Active,2022-12-23,Low
+MER00013,Joshi Group,Restaurant,Business,8845598850,joshigroup13@merchant.com,547977954661ZN,826,Hans Nagar,Karaikudi,Gujarat,809317,India,Active,2020-12-17,Low
+MER00014,"Handa, Mody and Lalla",Entertainment,Corporate,9403297229,handamodyandlalla14@merchant.com,144426235481ZR,457,Gole,Tiruppur,Madhya Pradesh,386584,India,Active,2024-10-14,Low
+MER00015,Dua Inc,Restaurant,Business,8325571351,duainc15@merchant.com,232688386091ZA,327,Vora Street,Surendranagar Dudhrej,Odisha,659126,India,Active,2018-10-06,Low
+MER00016,Malhotra LLC,Travel,Business,8324146025,malhotrallc16@merchant.com,664715794391Z8,545,Narasimhan Ganj,Amaravati,Gujarat,481438,India,Active,2021-04-13,Medium
+MER00017,Apte-Dora,Grocery,Business,7108905655,apte-dora17@merchant.com,913667439711Z6,718,Jaggi Circle,Muzaffarpur,Arunachal Pradesh,374591,India,Active,2019-11-08,Low
+MER00018,Gandhi LLC,E-commerce,Business,9377154409,gandhillc18@merchant.com,345162020341Z9,899,Rajagopalan Street,Jhansi,Manipur,030068,India,Active,2019-08-08,Low
+MER00019,Bobal PLC,E-commerce,Corporate,9385502198,bobalplc19@merchant.com,386508249151ZL,249,Uppal Path,Howrah,Assam,211049,India,Active,2022-08-20,Low
+MER00020,"Chaudry, Mukhopadhyay and Trivedi",E-commerce,Individual,7075668720,chaudrymukhopadhyayandtrivedi20@merchant.com,998269519221ZP,711,Sandhu Street,Bihar Sharif,Jharkhand,022025,India,Active,2026-02-13,Low
+MER00021,"Chadha, Bahri and Banerjee",Retail,Individual,9540088724,chadhabahriandbanerjee21@merchant.com,797851253601ZI,799,Panchal Street,Navi Mumbai,Odisha,828601,India,Active,2020-01-20,Medium
+MER00022,Sem-Oza,Retail,Business,8733759243,sem-oza22@merchant.com,267721675861ZH,712,Kanda Ganj,Tirupati,Meghalaya,203637,India,Active,2020-02-07,Low
+MER00023,"Nigam, Barman and Hegde",Grocery,Corporate,9819753173,nigambarmanandhegde23@merchant.com,349606504121Z2,201,Wable Road,Shimoga,Andhra Pradesh,860245,India,Active,2026-03-11,Low
+MER00024,Chacko Group,E-commerce,Business,9237836611,chackogroup24@merchant.com,191326037251Z5,177,Kannan Circle,Hapur,Mizoram,059095,India,Active,2018-11-28,High
+MER00025,"Singh, Pall and Mittal",Grocery,Business,8291749296,singhpallandmittal25@merchant.com,235904723271Z2,593,Gour Nagar,Aurangabad,Kerala,826208,India,Active,2021-10-03,Low
+MER00026,Balasubramanian LLC,Travel,Corporate,7820339790,balasubramanianllc26@merchant.com,719616619461ZU,92,Sankaran Path,Tezpur,Haryana,552108,India,Active,2023-11-11,Low
+MER00027,Prabhu-Goyal,Travel,Business,7073551670,prabhu-goyal27@merchant.com,942926420371ZX,823,Srivastava Path,Surendranagar Dudhrej,Karnataka,499130,India,Active,2018-11-07,Low
+MER00028,Lata-Garde,Retail,Business,8861781663,lata-garde28@merchant.com,831939761691Z9,669,Gupta Path,Katihar,Bihar,868673,India,Active,2019-05-26,Low
+MER00029,Chopra and Sons,Travel,Business,8110903010,chopraandsons29@merchant.com,659771040101ZG,273,Gara Road,Kadapa,Andhra Pradesh,228080,India,Active,2025-07-07,Low
+MER00030,"Mallick, Jha and Setty",E-commerce,Business,8896017497,mallickjhaandsetty30@merchant.com,563870804491ZR,759,Sekhon Marg,Orai,Odisha,625387,India,Active,2020-10-28,Low
+MER00031,Roy-Prabhakar,Education,Business,8713299575,roy-prabhakar31@merchant.com,624538201291ZO,305,Dar Chowk,Tenali,Tripura,398593,India,Active,2025-08-05,Low
+MER00032,Sunder-Tak,Healthcare,Business,8365147124,sunder-tak32@merchant.com,219750281651ZF,801,Barad Marg,Alwar,Uttar Pradesh,808264,India,Active,2026-06-12,Medium
+MER00033,"Patla, Gaba and Kari",Retail,Business,8864225938,patlagabaandkari33@merchant.com,216701986001Z5,111,Desai Marg,Sagar,Sikkim,799044,India,Active,2025-10-30,Medium
+MER00034,"Bajaj, Edwin and Varkey",Fuel,Business,7857248787,bajajedwinandvarkey34@merchant.com,988110248881Z9,885,Gade Nagar,Srikakulam,Jharkhand,363594,India,Active,2025-05-22,Low
+MER00035,Bassi LLC,Grocery,Business,8070077024,bassillc35@merchant.com,226231637771ZD,211,Sekhon Nagar,Bangalore,Punjab,715923,India,Active,2021-03-28,Medium
+MER00036,Bhagat Ltd,Utilities,Business,7526006680,bhagatltd36@merchant.com,302140190861ZA,67,Sampath Ganj,Rajpur Sonarpur,Kerala,453619,India,Active,2018-04-22,Medium
+MER00037,Natt-Koshy,Fuel,Business,8034797340,natt-koshy37@merchant.com,566603855001ZP,430,Tailor Circle,Dharmavaram,Sikkim,235230,India,Active,2025-03-12,Low
+MER00038,Kade-Keer,Fuel,Business,8778658467,kade-keer38@merchant.com,752025626061ZJ,247,Chandran Ganj,Nanded,Madhya Pradesh,252000,India,Active,2020-07-16,Low
+MER00039,Ahluwalia-Deshpande,Retail,Business,9686294550,ahluwalia-deshpande39@merchant.com,987495289301Z3,274,Keer Nagar,Howrah,Manipur,325654,India,Blocked,2025-06-20,Low
+MER00040,"Roy, Raman and Amble",Entertainment,Individual,8789836642,royramanandamble40@merchant.com,536455605171ZF,150,Baria Chowk,Burhanpur,Uttar Pradesh,188271,India,Active,2021-05-19,Low
+MER00041,Balay-Dhar,Grocery,Individual,9626852783,balay-dhar41@merchant.com,161414565401ZU,55,Sant Circle,Nadiad,Mizoram,231251,India,Active,2018-01-15,Medium
+MER00042,Bakshi Group,Grocery,Corporate,7573701447,bakshigroup42@merchant.com,576470751191Z2,192,Babu Chowk,Aizawl,Madhya Pradesh,409648,India,Active,2019-10-29,Low
+MER00043,Pant-Sule,Healthcare,Business,8925321120,pant-sule43@merchant.com,229287401591ZA,530,Khurana,Faridabad,Nagaland,599361,India,Active,2025-10-29,Medium
+MER00044,Barman-Chatterjee,Retail,Business,8900844448,barman-chatterjee44@merchant.com,492535297951Z7,265,Raman Zila,Nagaon,Meghalaya,645404,India,Active,2025-05-02,Low
+MER00045,"Hayer, Cheema and Gala",E-commerce,Business,8819799788,hayercheemaandgala45@merchant.com,729340063851Z0,72,Halder,Solapur,Uttar Pradesh,556688,India,Active,2023-12-29,Low
+MER00046,Setty-Kant,E-commerce,Business,8904247000,setty-kant46@merchant.com,532478511031Z9,435,Dutta Circle,Pimpri-Chinchwad,Odisha,573535,India,Suspended,2026-03-12,High
+MER00047,Seth Group,E-commerce,Business,7921387686,sethgroup47@merchant.com,509044679971ZQ,443,Suri Path,Ozhukarai,Andhra Pradesh,316465,India,Active,2020-11-25,Low
+MER00048,"Hans, Natt and Seth",Retail,Business,9880388843,hansnattandseth48@merchant.com,869988801661Z2,528,Iyengar,Nagercoil,Nagaland,103075,India,Active,2022-11-16,Low
+MER00049,Toor Inc,Entertainment,Business,7577123032,toorinc49@merchant.com,923739236711Z8,818,Padmanabhan,Katihar,Telangana,510130,India,Active,2023-02-15,Low
+MER00050,"Raj, Sharaf and Shukla",Grocery,Corporate,7760612355,rajsharafandshukla50@merchant.com,248526037181ZT,648,Lanka Marg,Kakinada,Kerala,699827,India,Active,2024-04-02,Medium
+MER00051,"Pradhan, Keer and Mitter",Grocery,Business,8795138245,pradhankeerandmitter51@merchant.com,695417935871ZE,562,Bala Road,Ghaziabad,Bihar,557736,India,Active,2025-12-25,Medium
+MER00052,"Dani, Wable and Pillay",E-commerce,Business,8174842045,daniwableandpillay52@merchant.com,283138869111ZB,338,Barad Circle,Aligarh,Assam,678050,India,Active,2020-05-02,Low
+MER00053,Baria-Balakrishnan,Utilities,Business,9611931600,baria-balakrishnan53@merchant.com,848101403981ZI,250,Barad Zila,Medininagar,Sikkim,657173,India,Active,2019-07-24,Low
+MER00054,Rege Group,Restaurant,Corporate,7301094350,regegroup54@merchant.com,749725390431ZZ,494,Memon Nagar,Thane,West Bengal,733549,India,Active,2025-09-14,Low
+MER00055,"Ratti, Choudhury and Kumer",Healthcare,Individual,8307141939,rattichoudhuryandkumer55@merchant.com,192153196801ZQ,363,Mallick Road,Nellore,Tamil Nadu,886321,India,Active,2023-12-03,Low
+MER00056,Bora and Sons,Education,Business,9470323085,boraandsons56@merchant.com,274125709971Z8,742,Bhasin,Dhule,Uttarakhand,476520,India,Inactive,2021-02-18,Low
+MER00057,"Kadakia, Bala and Pillai",E-commerce,Individual,7780054639,kadakiabalaandpillai57@merchant.com,663910052761Z4,595,Prabhu Ganj,Bongaigaon,Haryana,595104,India,Active,2025-07-09,Medium
+MER00058,Ramesh-Wagle,Grocery,Business,7533408692,ramesh-wagle58@merchant.com,379991328741ZS,562,Barad Marg,Salem,Telangana,570466,India,Active,2023-05-02,Medium
+MER00059,Dash Group,Grocery,Business,9809105279,dashgroup59@merchant.com,946302327581ZF,766,Butala Street,Bhopal,Uttar Pradesh,374804,India,Active,2020-09-16,Low
+MER00060,"Som, Sama and Rana",Grocery,Business,9532827149,somsamaandrana60@merchant.com,943552127581ZM,260,Chaudhari Road,Nizamabad,Punjab,452512,India,Blocked,2025-04-18,Low
+MER00061,Kurian PLC,Restaurant,Business,7759843564,kurianplc61@merchant.com,115754648141ZN,360,Sarraf Marg,Guntur,Nagaland,875712,India,Active,2018-12-08,Medium
+MER00062,"Vaidya, Kashyap and Bhalla",Grocery,Business,9348418811,vaidyakashyapandbhalla62@merchant.com,523856603041ZP,54,Kakar Road,Jamshedpur,Andhra Pradesh,389159,India,Active,2021-02-24,Low
+MER00063,"Sami, Gokhale and Kata",E-commerce,Business,8568406668,samigokhaleandkata63@merchant.com,536246004931Z4,32,Krishna Marg,Tiruchirappalli,Tripura,860417,India,Active,2022-01-13,Low
+MER00064,Shukla-Nadkarni,Retail,Individual,7616396569,shukla-nadkarni64@merchant.com,908214513211ZK,897,Choudhury Chowk,Bharatpur,Maharashtra,527006,India,Suspended,2018-07-15,Low
+MER00065,"Savant, Madan and Banerjee",Healthcare,Individual,7882004946,savantmadanandbanerjee65@merchant.com,882227113751ZG,953,Goswami Ganj,Nandyal,West Bengal,478087,India,Active,2021-03-22,Low
+MER00066,Wadhwa-Doctor,Restaurant,Individual,8735723901,wadhwa-doctor66@merchant.com,981892728031ZZ,503,Kuruvilla Zila,Guwahati,Punjab,260156,India,Active,2021-03-07,Low
+MER00067,Dhingra-Baral,Fuel,Business,9790003926,dhingra-baral67@merchant.com,368399191301ZA,227,Vyas,Fatehpur,Andhra Pradesh,366055,India,Active,2023-09-10,Medium
+MER00068,Bhatnagar PLC,Utilities,Business,8755311758,bhatnagarplc68@merchant.com,799007069781ZI,42,Setty Path,Gaya,Goa,566414,India,Active,2018-01-12,Low
+MER00069,Setty Inc,Travel,Corporate,7016869370,settyinc69@merchant.com,364769006981ZS,584,Goda Ganj,Rajahmundry,Chhattisgarh,067238,India,Active,2021-02-01,Medium
+MER00070,Bakshi and Sons,Utilities,Corporate,9768546621,bakshiandsons70@merchant.com,166725843011ZI,482,Chawla Path,Adoni,Andhra Pradesh,217698,India,Blocked,2021-03-14,Low
+MER00071,Roy Ltd,Entertainment,Corporate,7588923092,royltd71@merchant.com,165196796961Z2,421,Ganesh Path,Chittoor,Chhattisgarh,362697,India,Active,2023-06-17,Low
+MER00072,"Sandhu, Chadha and Zachariah",Restaurant,Individual,7193098420,sandhuchadhaandzachariah72@merchant.com,429296517191ZC,914,Madan Path,Guntakal,Arunachal Pradesh,318517,India,Active,2024-11-24,Low
+MER00073,Venkatesh PLC,E-commerce,Business,9020043611,venkateshplc73@merchant.com,957741401641ZE,813,Sidhu,Bidhannagar,Telangana,864570,India,Active,2021-07-05,Medium
+MER00074,Parsa LLC,Travel,Business,9611741101,parsallc74@merchant.com,698842315831ZM,463,Edwin,Gandhidham,Chhattisgarh,012338,India,Active,2022-04-27,Medium
+MER00075,Buch Inc,Grocery,Business,7379082885,buchinc75@merchant.com,564114089931Z0,806,Buch Street,Chandrapur,Bihar,287865,India,Active,2024-12-04,Low
+MER00076,"Nanda, Khare and Natt",Retail,Corporate,7619301831,nandakhareandnatt76@merchant.com,931753648831ZZ,496,Atwal Path,Chandrapur,Tamil Nadu,645343,India,Active,2019-01-16,Low
+MER00077,"Trivedi, Mahal and Dyal",Retail,Business,8324399446,trivedimahalanddyal77@merchant.com,803032845811Z0,512,Sekhon Zila,Mumbai,Punjab,341498,India,Active,2021-08-21,High
+MER00078,"Ratta, Lanka and Dhar",Grocery,Business,7779297354,rattalankaanddhar78@merchant.com,169492832561ZT,432,Ghosh Circle,Durg,Madhya Pradesh,021708,India,Active,2024-06-19,Low
+MER00079,Dyal-Yadav,Restaurant,Corporate,7204718016,dyal-yadav79@merchant.com,528886913501ZF,951,Munshi Zila,Panchkula,Madhya Pradesh,261721,India,Active,2022-07-24,Low
+MER00080,Purohit-Boase,Retail,Business,9596560111,purohit-boase80@merchant.com,239990368621ZJ,438,Rajan Chowk,Gopalpur,Mizoram,181857,India,Active,2021-10-10,Medium
+MER00081,Kohli Inc,Travel,Business,8446247810,kohliinc81@merchant.com,936516908861ZE,206,Roy Path,Tadipatri,Maharashtra,476333,India,Active,2025-12-27,Low
+MER00082,Arora LLC,Utilities,Individual,7540622786,arorallc82@merchant.com,662409606541ZG,38,Raman Chowk,Haldia,Nagaland,835077,India,Active,2022-10-05,High
+MER00083,Venkataraman-Parmar,Grocery,Individual,9425209899,venkataraman-parmar83@merchant.com,838620309371ZB,149,Dua Street,Amaravati,Manipur,580767,India,Active,2025-05-22,Low
+MER00084,"Contractor, Nayak and Deshmukh",Retail,Business,9881731030,contractornayakanddeshmukh84@merchant.com,466615124621ZL,514,Sachdeva,Vijayawada,Telangana,936712,India,Active,2023-06-30,Low
+MER00085,Trivedi Group,Grocery,Individual,9078723508,trivedigroup85@merchant.com,431280300041ZK,560,Anand Nagar,Purnia,Goa,121471,India,Active,2026-07-21,Low
+MER00086,"Narayan, Sethi and Kamdar",Retail,Business,8232146887,narayansethiandkamdar86@merchant.com,447471290211ZB,78,Setty Marg,Alappuzha,Andhra Pradesh,511630,India,Active,2023-06-18,Low
+MER00087,Venkataraman-Basak,Travel,Business,8967520733,venkataraman-basak87@merchant.com,714265985571ZU,736,Shan Circle,Shimoga,Uttarakhand,385047,India,Active,2023-08-02,High
+MER00088,Dada Inc,Grocery,Corporate,9827413262,dadainc88@merchant.com,421351258171ZM,72,Sami,Raebareli,Manipur,847382,India,Active,2023-05-20,High
+MER00089,Agrawal-Chakraborty,Entertainment,Business,7467404215,agrawal-chakraborty89@merchant.com,694449792651ZK,861,Sama Nagar,Madurai,Telangana,368835,India,Active,2021-11-10,Low
+MER00090,Deep-Wadhwa,Retail,Business,7189745077,deep-wadhwa90@merchant.com,932501450931ZK,91,Naidu,Shimoga,Madhya Pradesh,557498,India,Active,2024-04-14,Low
+MER00091,Anne PLC,Restaurant,Individual,9099388566,anneplc91@merchant.com,946279334181ZN,194,Dhillon Zila,Satara,Gujarat,550489,India,Active,2024-01-07,Low
+MER00092,Rao-Kala,Grocery,Business,7122492851,rao-kala92@merchant.com,524887736791ZQ,698,Savant Nagar,Dhule,Uttar Pradesh,888819,India,Inactive,2018-07-12,Low
+MER00093,Keer Group,E-commerce,Business,7761631210,keergroup93@merchant.com,219134268031ZR,816,Varghese Nagar,Bokaro,Jharkhand,611226,India,Active,2019-10-12,Medium
+MER00094,Dua-Shan,Grocery,Corporate,9296832227,dua-shan94@merchant.com,119535027571ZI,977,Srinivas Zila,Dehri,Bihar,362591,India,Active,2021-10-19,Low
+MER00095,Dash and Sons,Education,Business,7995808615,dashandsons95@merchant.com,869639880651ZQ,532,Bala Circle,Thiruvananthapuram,Rajasthan,871115,India,Active,2020-02-06,Low
+MER00096,Butala-Ratta,Restaurant,Business,9999697960,butala-ratta96@merchant.com,598138029271ZL,907,Wadhwa Zila,New Delhi,Uttarakhand,361651,India,Active,2025-11-21,High
+MER00097,Shanker Ltd,Restaurant,Business,7556894835,shankerltd97@merchant.com,898841555931ZX,645,Hegde,Jalgaon,Arunachal Pradesh,359026,India,Active,2023-11-07,Low
+MER00098,Ramaswamy-Jhaveri,E-commerce,Business,9087206144,ramaswamy-jhaveri98@merchant.com,106402573671ZY,797,Bhakta Road,Rourkela,Haryana,818805,India,Active,2023-01-07,Low
+MER00099,Issac Inc,Education,Business,8477643578,issacinc99@merchant.com,459512399411ZU,59,Sachdeva Nagar,Dharmavaram,Punjab,216850,India,Blocked,2019-11-07,Low
+MER00100,Jaggi Group,Healthcare,Business,9161714730,jaggigroup100@merchant.com,284521790651ZF,907,Dar Ganj,Gulbarga,Tamil Nadu,151915,India,Active,2024-04-17,Low
+MER00101,Muni PLC,E-commerce,Business,7133128982,muniplc101@merchant.com,626147199461Z4,592,Sane Ganj,Indore,Goa,891603,India,Active,2023-10-08,Low
+MER00102,"Choudhury, Mangat and Palan",Travel,Business,8941136439,choudhurymangatandpalan102@merchant.com,926582432411ZY,757,Bawa Circle,Siliguri,Tripura,464132,India,Inactive,2023-12-02,Low
+MER00103,Bobal-Pingle,Fuel,Business,9820130426,bobal-pingle103@merchant.com,289383548761Z3,438,Bora Marg,Kadapa,Mizoram,437753,India,Active,2023-05-01,Low
+MER00104,Sani Ltd,E-commerce,Corporate,8919744765,saniltd104@merchant.com,785144861961ZS,52,Din Path,Danapur,Assam,492202,India,Active,2023-05-29,High
+MER00105,Swaminathan Inc,Restaurant,Individual,8500700402,swaminathaninc105@merchant.com,712477355751ZJ,218,Tiwari Road,Bhiwani,Arunachal Pradesh,869527,India,Active,2024-11-05,Low
+MER00106,Doctor Ltd,Restaurant,Corporate,9262640554,doctorltd106@merchant.com,646319242931ZB,527,Morar Marg,Gangtok,Andhra Pradesh,679918,India,Active,2020-04-02,Medium
+MER00107,"Badal, Sura and Bava",Travel,Business,9105582112,badalsuraandbava107@merchant.com,305590412631ZM,452,Ahluwalia Road,Srinagar,Haryana,201757,India,Active,2020-05-08,Low
+MER00108,Pandya-Bahl,Travel,Business,8205212318,pandya-bahl108@merchant.com,451363748301ZV,442,Mallick Nagar,Durg,Mizoram,878390,India,Active,2023-06-06,Medium
+MER00109,Chahal Ltd,Grocery,Individual,8993725754,chahalltd109@merchant.com,262891345591ZC,783,Hegde Zila,Kakinada,Rajasthan,403742,India,Active,2023-11-05,Low
+MER00110,Brar PLC,Utilities,Business,9871909735,brarplc110@merchant.com,293623211971ZH,556,Seth Circle,Kharagpur,Himachal Pradesh,312749,India,Active,2024-10-02,Low
+MER00111,Dasgupta-Tandon,Restaurant,Business,7949596756,dasgupta-tandon111@merchant.com,695984532191ZL,538,Kalita Path,Kumbakonam,Nagaland,616714,India,Active,2018-06-29,High
+MER00112,"Zachariah, Pai and Gandhi",Grocery,Corporate,8689148818,zachariahpaiandgandhi112@merchant.com,634044729681Z7,731,Mukhopadhyay Ganj,Serampore,Tripura,335400,India,Active,2022-01-08,Low
+MER00113,"Yohannan, Varkey and Hayer",Restaurant,Corporate,9710214932,yohannanvarkeyandhayer113@merchant.com,691414617981ZU,916,Tella Chowk,Faridabad,Tripura,385090,India,Active,2024-12-13,Medium
+MER00114,Sarna and Sons,Retail,Individual,8453617856,sarnaandsons114@merchant.com,864037507151ZA,255,Grewal Marg,Arrah,Tamil Nadu,101068,India,Active,2018-11-12,Low
+MER00115,Purohit-Dutt,Grocery,Business,8934024778,purohit-dutt115@merchant.com,781103258211ZS,130,Sachdev Zila,Bikaner,Bihar,395357,India,Active,2024-07-28,Medium
+MER00116,"Thakkar, Butala and Batra",Retail,Business,7403524763,thakkarbutalaandbatra116@merchant.com,243878475031Z2,641,Raja Nagar,Jodhpur,Bihar,943223,India,Active,2020-02-20,Low
+MER00117,"Goda, Lata and Jani",Healthcare,Business,9127263607,godalataandjani117@merchant.com,755059353721Z6,896,Mistry Nagar,Tiruvottiyur,Arunachal Pradesh,199216,India,Active,2020-08-09,Low
+MER00118,Shan and Sons,Healthcare,Business,9192384374,shanandsons118@merchant.com,634931004871ZP,154,Yohannan Chowk,Kottayam,Sikkim,145643,India,Active,2026-03-13,Low
+MER00119,"Kulkarni, Comar and Brahmbhatt",E-commerce,Individual,9082224685,kulkarnicomarandbrahmbhatt119@merchant.com,955598882681ZD,559,Chaudhuri Chowk,Indore,Arunachal Pradesh,435957,India,Active,2024-07-17,Low
+MER00120,"Nanda, Jha and Din",Grocery,Corporate,8882604285,nandajhaanddin120@merchant.com,701276698121ZX,592,Radhakrishnan Zila,Tiruchirappalli,Maharashtra,545809,India,Active,2021-10-19,Medium
+MER00121,"Gulati, Mangal and Barman",Restaurant,Business,7189715605,gulatimangalandbarman121@merchant.com,383348190581ZY,66,Baria Road,Ahmedabad,Karnataka,504291,India,Active,2020-08-08,Low
+MER00122,Vohra-Sharma,Fuel,Business,9437280396,vohra-sharma122@merchant.com,485098312641Z9,876,Verma,Bilaspur,Haryana,860014,India,Active,2020-10-22,High
+MER00123,Narayan-Sood,Grocery,Business,9443378993,narayan-sood123@merchant.com,699976323621ZM,463,Ghose Zila,Berhampore,Jharkhand,947364,India,Active,2021-06-03,Medium
+MER00124,Morar and Sons,Entertainment,Corporate,7079021729,morarandsons124@merchant.com,168773767241ZR,484,Kala Circle,Anantapur,Uttarakhand,269561,India,Active,2021-04-14,Low
+MER00125,Tripathi-Wali,Travel,Business,8643848183,tripathi-wali125@merchant.com,955658877871ZJ,564,Yadav Chowk,Amravati,Bihar,758682,India,Blocked,2019-08-12,Low
+MER00126,Brar-Khatri,Grocery,Individual,7448743400,brar-khatri126@merchant.com,645322728411ZV,128,Chanda Nagar,Ratlam,Gujarat,519530,India,Active,2021-02-21,Low
+MER00127,Sabharwal LLC,Healthcare,Individual,7853962384,sabharwalllc127@merchant.com,147478822011ZN,594,Pillay Ganj,Pune,Odisha,486302,India,Active,2020-12-05,Medium
+MER00128,Kadakia-Parmer,Retail,Business,9737251308,kadakia-parmer128@merchant.com,272342807811Z9,327,Jaggi,Shimla,Odisha,995676,India,Active,2020-10-02,Low
+MER00129,Sharaf Group,Healthcare,Business,9456687756,sharafgroup129@merchant.com,143987619431Z5,167,Date Path,Dindigul,West Bengal,484905,India,Inactive,2019-06-23,Medium
+MER00130,"Banik, Mohanty and Saran",Grocery,Corporate,9721907182,banikmohantyandsaran130@merchant.com,257366108371ZK,679,Palla Chowk,Bihar Sharif,Jharkhand,914586,India,Active,2026-03-26,Low
+MER00131,"Bhasin, Dugal and Rastogi",Travel,Individual,8393607658,bhasindugalandrastogi131@merchant.com,624403975781ZT,819,Shankar Road,Hosur,Mizoram,646851,India,Active,2022-09-29,Low
+MER00132,Konda Ltd,Grocery,Business,8944354230,kondaltd132@merchant.com,963775146531ZN,403,Verma Zila,Unnao,Rajasthan,564260,India,Active,2025-01-22,Low
+MER00133,"Sharaf, Seshadri and Brar",Utilities,Corporate,7053000660,sharafseshadriandbrar133@merchant.com,835869733001Z1,507,Parmar Ganj,Bettiah,Arunachal Pradesh,238258,India,Inactive,2019-08-06,Low
+MER00134,"Sura, Mann and Ahluwalia",Grocery,Business,9000971063,suramannandahluwalia134@merchant.com,662804924851ZK,899,Sridhar Street,Bharatpur,Madhya Pradesh,212198,India,Suspended,2025-02-01,Low
+MER00135,Kothari PLC,Travel,Business,8885288579,kothariplc135@merchant.com,715812150671ZR,881,Mody Road,Tiruppur,Gujarat,658128,India,Active,2024-05-22,Medium
+MER00136,"Choudhury, Ganguly and Balan",Education,Business,7598630182,choudhurygangulyandbalan136@merchant.com,847011089921ZK,136,Bhatia Circle,Kurnool,Assam,033327,India,Active,2025-07-06,Low
+MER00137,Anne-Wadhwa,Utilities,Business,8756015345,anne-wadhwa137@merchant.com,159273667121ZM,740,Thakkar Road,Gangtok,Punjab,968210,India,Active,2019-07-20,Low
+MER00138,Bhatia Group,E-commerce,Individual,9409339456,bhatiagroup138@merchant.com,234359060121ZU,156,Brahmbhatt Street,Gaya,Karnataka,047113,India,Active,2019-10-02,Medium
+MER00139,Shah-Mohan,Education,Business,9229657878,shah-mohan139@merchant.com,765072285971ZZ,907,Mody Road,Kanpur,Rajasthan,357457,India,Active,2021-05-17,Low
+MER00140,Pandya Inc,Utilities,Business,8690253100,pandyainc140@merchant.com,147165429561Z9,705,Khalsa Marg,Kurnool,Rajasthan,044413,India,Active,2019-05-15,Low
+MER00141,Kamdar Group,Entertainment,Business,7403911924,kamdargroup141@merchant.com,259502462311ZL,706,Palla Street,Dehradun,Gujarat,639704,India,Active,2019-04-14,Medium
+MER00142,"Seth, Singhal and Sha",Retail,Corporate,8555800474,sethsinghalandsha142@merchant.com,299779831291ZR,181,Srinivas Ganj,Srikakulam,Bihar,744653,India,Active,2026-07-17,Low
+MER00143,Gopal LLC,Grocery,Individual,8473206181,gopalllc143@merchant.com,198652614811ZR,21,Agate Road,Rampur,Himachal Pradesh,153486,India,Active,2024-12-08,Low
+MER00144,"Pathak, Butala and Dube",Grocery,Business,8466358638,pathakbutalaanddube144@merchant.com,769854656331ZB,486,Patla Circle,Rourkela,Sikkim,421673,India,Active,2021-03-30,Low
+MER00145,Suresh-Buch,Healthcare,Corporate,8883501577,suresh-buch145@merchant.com,497132731871ZP,612,Oza Chowk,Sultan Pur Majra,Chhattisgarh,728616,India,Active,2018-06-04,Low
+MER00146,"Mani, Kapadia and Dixit",Grocery,Business,9391164050,manikapadiaanddixit146@merchant.com,351468771141Z9,272,Mohanty Circle,Thane,Karnataka,621839,India,Active,2019-10-15,Low
+MER00147,"Kumar, Mukherjee and Parekh",Travel,Business,9614956443,kumarmukherjeeandparekh147@merchant.com,998975773391ZE,596,Rai,Dharmavaram,West Bengal,283551,India,Inactive,2021-05-19,Medium
+MER00148,"Prashad, Barman and Loke",Restaurant,Business,7858817960,prashadbarmanandloke148@merchant.com,124035935891ZK,486,Kapur,Ajmer,Goa,679745,India,Active,2023-02-14,Medium
+MER00149,Brahmbhatt-Pandey,Utilities,Business,8058754355,brahmbhatt-pandey149@merchant.com,281048638031Z3,413,Dada Road,Mau,Jharkhand,968221,India,Active,2023-01-23,Low
+MER00150,Rau LLC,Grocery,Business,7627087550,raullc150@merchant.com,621066470751Z3,812,Chakraborty Path,Buxar,Odisha,598364,India,Active,2022-06-05,Low
+MER00151,"Shroff, Shroff and Anand",Restaurant,Business,9771976267,shroffshroffandanand151@merchant.com,937890328571ZG,822,Sathe Street,Ratlam,Bihar,000549,India,Active,2023-08-02,Low
+MER00152,Solanki LLC,Grocery,Individual,9772457461,solankillc152@merchant.com,951717669571ZE,696,Ahuja Marg,Jamalpur,Karnataka,161957,India,Active,2025-06-03,Low
+MER00153,Bandi LLC,Restaurant,Business,7522276124,bandillc153@merchant.com,933680237421ZV,511,Sanghvi Zila,Sagar,Tripura,668276,India,Active,2018-02-25,Medium
+MER00154,Narayan-Hora,Grocery,Business,8735441466,narayan-hora154@merchant.com,319640164741ZP,884,Singhal Road,Bongaigaon,Tamil Nadu,303089,India,Active,2022-05-19,Low
+MER00155,Bhatia and Sons,Education,Corporate,8359291756,bhatiaandsons155@merchant.com,344016177491ZM,505,Munshi Street,Eluru,Himachal Pradesh,936684,India,Active,2018-03-09,Medium
+MER00156,Lad-Buch,Travel,Corporate,9396449211,lad-buch156@merchant.com,145840952471ZX,796,Acharya,Mira-Bhayandar,Odisha,028181,India,Active,2021-10-28,Low
+MER00157,Rajagopal LLC,E-commerce,Business,8492172796,rajagopalllc157@merchant.com,487463653041ZJ,188,Swaminathan Nagar,Katihar,Odisha,832193,India,Active,2020-01-26,Low
+MER00158,Atwal LLC,Entertainment,Individual,7202714296,atwalllc158@merchant.com,708923875391ZX,784,Chhabra,Vijayanagaram,Tripura,095368,India,Active,2019-06-18,Low
+MER00159,Gupta-Samra,Education,Business,7177949492,gupta-samra159@merchant.com,607985774821ZC,640,Seshadri Road,Jamalpur,Madhya Pradesh,586796,India,Active,2021-07-25,Low
+MER00160,Naik-Joshi,Travel,Corporate,8353449832,naik-joshi160@merchant.com,451346658831ZF,807,Das Ganj,Mathura,West Bengal,234816,India,Active,2022-05-23,Low
+MER00161,Mukherjee-Shroff,E-commerce,Individual,7646656889,mukherjee-shroff161@merchant.com,374878395071ZM,289,Swaminathan Marg,Singrauli,Uttarakhand,128880,India,Active,2022-11-13,Low
+MER00162,Andra Group,Retail,Business,7610593267,andragroup162@merchant.com,475418416621ZV,963,Som Road,Raurkela Industrial Township,Kerala,361130,India,Active,2023-08-03,Low
+MER00163,Grover Ltd,Restaurant,Business,7166943553,groverltd163@merchant.com,948299716371ZK,464,Dugar Nagar,Allahabad,Manipur,112663,India,Active,2023-08-02,Low
+MER00164,Bath Ltd,Education,Corporate,9239437814,bathltd164@merchant.com,204492677681Z4,252,Barman Road,Bidar,Mizoram,275147,India,Active,2022-06-05,Medium
+MER00165,Bera-Misra,Education,Individual,7677142805,bera-misra165@merchant.com,831949160121ZW,962,Desai Circle,Buxar,Goa,459849,India,Active,2018-07-22,Low
+MER00166,Merchant-Kala,Fuel,Corporate,7933733391,merchant-kala166@merchant.com,564556217621Z2,734,Sinha Zila,Jammu,Manipur,878216,India,Active,2020-11-22,Low
+MER00167,"Chanda, Patla and Gola",Utilities,Business,8048996153,chandapatlaandgola167@merchant.com,531845759731ZR,656,Kota Road,Phusro,Kerala,340915,India,Active,2022-07-09,Low
+MER00168,"Hari, Roy and Narasimhan",Restaurant,Business,7623472296,hariroyandnarasimhan168@merchant.com,583991902951ZG,261,Chanda Circle,Pune,Mizoram,187452,India,Active,2023-05-05,Low
+MER00169,Andra Group,Fuel,Corporate,8445525429,andragroup169@merchant.com,711877208581ZI,992,Shroff Zila,Salem,Madhya Pradesh,505545,India,Active,2025-08-01,Medium
+MER00170,"Wason, Mani and Balakrishnan",Retail,Business,9174040150,wasonmaniandbalakrishnan170@merchant.com,704386731181ZS,934,Divan Chowk,Nagaon,Uttarakhand,628038,India,Active,2018-05-20,Medium
+MER00171,Savant Inc,Restaurant,Business,8704245996,savantinc171@merchant.com,367428684771ZF,817,Gokhale Ganj,Bellary,Karnataka,604156,India,Active,2021-03-15,Low
+MER00172,"Pathak, Dewan and Dash",Healthcare,Business,7544738916,pathakdewananddash172@merchant.com,636432952991ZP,854,Sama Street,Tadipatri,Chhattisgarh,868516,India,Active,2023-11-25,Low
+MER00173,Pall-Bala,Healthcare,Business,7110663147,pall-bala173@merchant.com,945915217461ZF,889,Rana Street,Patna,Assam,779863,India,Active,2020-06-15,Low
+MER00174,"Panchal, Kara and Arora",Grocery,Business,7616691946,panchalkaraandarora174@merchant.com,605691844241Z0,608,Suresh Road,Ghaziabad,Chhattisgarh,383491,India,Active,2018-11-25,Medium
+MER00175,Natarajan-Narang,E-commerce,Business,8926060871,natarajan-narang175@merchant.com,351394385461Z2,221,Amble Chowk,Bhilwara,Odisha,410312,India,Active,2026-02-26,Low
+MER00176,Tak-Bakshi,Utilities,Business,7722576245,tak-bakshi176@merchant.com,958628873341ZN,191,Issac Road,Suryapet,Tamil Nadu,753944,India,Active,2022-10-27,Medium
+MER00177,Bail and Sons,Utilities,Business,8729597458,bailandsons177@merchant.com,442653498741ZR,613,Bhagat Nagar,Malda,Jharkhand,055437,India,Active,2023-07-05,Low
+MER00178,Ramanathan-Mane,Travel,Business,8422403132,ramanathan-mane178@merchant.com,559486748961Z2,629,Chhabra Ganj,Surendranagar Dudhrej,West Bengal,838696,India,Active,2024-11-16,Low
+MER00179,Deshmukh Group,Utilities,Individual,8828152085,deshmukhgroup179@merchant.com,546481780201ZT,431,Shetty Circle,Solapur,Gujarat,028315,India,Active,2019-01-29,Low
+MER00180,"Pingle, Jain and Kar",Restaurant,Business,7271846080,pinglejainandkar180@merchant.com,953093041041ZW,602,Gole Road,Ulhasnagar,Haryana,583231,India,Active,2020-11-01,Low
+MER00181,"Keer, Barad and Ratta",Retail,Corporate,8044258205,keerbaradandratta181@merchant.com,254165810661Z0,518,Pau Nagar,Bhagalpur,Himachal Pradesh,925533,India,Active,2026-04-23,Low
+MER00182,Ganesh-Dugal,Utilities,Individual,7080544794,ganesh-dugal182@merchant.com,675587064841ZD,608,Dada Circle,Jalandhar,Manipur,506373,India,Active,2019-10-22,Medium
+MER00183,Prakash-Dar,Entertainment,Business,8268785907,prakash-dar183@merchant.com,669389591611ZM,896,Sharma Zila,Kollam,Nagaland,044056,India,Active,2023-11-24,Medium
+MER00184,Divan Ltd,Grocery,Business,9734093383,divanltd184@merchant.com,275201694831ZL,346,Bandi Circle,Gulbarga,Assam,662385,India,Active,2020-10-26,Low
+MER00185,Basu-Das,Grocery,Business,8412045906,basu-das185@merchant.com,418720967021Z7,660,Sura Nagar,Khora ,Kerala,681402,India,Active,2021-11-21,Medium
+MER00186,"Cherian, Sandhu and Borde",Restaurant,Business,9521719855,cheriansandhuandborde186@merchant.com,797971960641ZK,354,Sinha,Kulti,Manipur,164781,India,Active,2020-09-12,Medium
+MER00187,"Cheema, Biswas and Kannan",Travel,Business,9876213219,cheemabiswasandkannan187@merchant.com,647275617301Z3,128,Nayak Ganj,Thiruvananthapuram,Tripura,024520,India,Active,2023-03-18,Low
+MER00188,"Madan, Master and Kari",Grocery,Business,8322155152,madanmasterandkari188@merchant.com,189935308101ZK,156,Divan Road,Vadodara,Tamil Nadu,592742,India,Active,2020-03-29,High
+MER00189,"Raghavan, Mander and Butala",E-commerce,Business,8942310866,raghavanmanderandbutala189@merchant.com,644121264991ZC,289,Bhakta Ganj,Pallavaram,Tamil Nadu,752719,India,Active,2019-01-24,Low
+MER00190,"Mohan, Ghose and Dube",Travel,Business,7473224961,mohanghoseanddube190@merchant.com,881970540741ZP,331,Mandal,Durg,Himachal Pradesh,474411,India,Active,2025-06-09,Medium
+MER00191,"Walla, Vasa and Hora",Healthcare,Business,8675339407,wallavasaandhora191@merchant.com,386193446591ZU,972,Ranganathan Street,Bharatpur,Tripura,442063,India,Active,2024-09-25,Medium
+MER00192,Balan Inc,Grocery,Business,7908881858,balaninc192@merchant.com,764435785231ZZ,580,Deo Marg,Ulhasnagar,Chhattisgarh,692362,India,Active,2018-04-22,Low
+MER00193,Khalsa-Hora,Education,Corporate,8391675403,khalsa-hora193@merchant.com,104445118991ZE,666,Chander Ganj,Jammu,Haryana,169717,India,Active,2023-06-02,Low
+MER00194,Pandit-Handa,Healthcare,Business,9325751524,pandit-handa194@merchant.com,363044773261ZL,876,Chawla Road,Chinsurah,Gujarat,574837,India,Blocked,2025-10-07,Low
+MER00195,Bobal-Singh,Healthcare,Individual,9009720580,bobal-singh195@merchant.com,756873580281ZD,725,Bali Street,South Dumdum,Karnataka,717859,India,Active,2025-11-20,Medium
+MER00196,Gaba-Sunder,Healthcare,Business,9212770779,gaba-sunder196@merchant.com,398108007321ZL,508,Bawa Street,Surat,Assam,814617,India,Active,2022-12-05,Medium
+MER00197,Thakur PLC,Restaurant,Business,7362073540,thakurplc197@merchant.com,346020351231ZA,498,Sachdev,Haldia,Chhattisgarh,709670,India,Active,2018-03-19,Low
+MER00198,Datta PLC,E-commerce,Business,9493012934,dattaplc198@merchant.com,935525459031ZC,372,Bumb Chowk,Sri Ganganagar,Jharkhand,083278,India,Active,2018-05-03,Low
+MER00199,"Gour, Kar and Loyal",Grocery,Business,8466294376,gourkarandloyal199@merchant.com,308308860521Z4,932,Ratti Nagar,Danapur,Manipur,819088,India,Active,2018-02-03,Low
+MER00200,Borde-Raja,Grocery,Individual,7122943197,borde-raja200@merchant.com,178774585181ZN,842,Din,Berhampore,Tamil Nadu,567738,India,Active,2022-07-12,Medium
+MER00201,Borde-Gade,Grocery,Corporate,9721544998,borde-gade201@merchant.com,363039133671ZR,358,Khanna Zila,Morbi,Punjab,936940,India,Active,2022-02-12,Low
+MER00202,Koshy-Batta,Grocery,Individual,8575330990,koshy-batta202@merchant.com,353016442651Z2,883,Parmar Path,Pimpri-Chinchwad,Punjab,319887,India,Active,2025-12-28,Low
+MER00203,"Brar, De and Dora",Fuel,Business,7677629367,brardeanddora203@merchant.com,732242860681ZA,436,Kalla Zila,Dibrugarh,Punjab,703210,India,Active,2020-01-06,Low
+MER00204,Devan-Kari,Restaurant,Individual,7022677741,devan-kari204@merchant.com,203377113681ZU,65,Nayak Zila,Thiruvananthapuram,Sikkim,668304,India,Active,2021-07-26,Low
+MER00205,Lalla PLC,Restaurant,Business,8813771255,lallaplc205@merchant.com,456455052741ZM,536,Bajaj Marg,Sambalpur,Odisha,741944,India,Active,2019-06-25,Low
+MER00206,Chander PLC,Healthcare,Business,9889270162,chanderplc206@merchant.com,955431332441ZU,468,Chokshi Circle,Howrah,Punjab,886695,India,Active,2026-06-08,Low
+MER00207,Mand PLC,Utilities,Business,9375376351,mandplc207@merchant.com,695531520571Z9,137,Ramachandran,Madanapalle,Himachal Pradesh,336386,India,Active,2026-03-18,Medium
+MER00208,Mall LLC,E-commerce,Business,7008652754,mallllc208@merchant.com,969369266671ZZ,207,Manda Road,Karimnagar,Rajasthan,254624,India,Active,2024-12-17,Low
+MER00209,"Basak, Konda and Mandal",Entertainment,Business,7799761304,basakkondaandmandal209@merchant.com,535250864051ZB,981,Sanghvi Ganj,Avadi,Manipur,020903,India,Active,2023-12-09,Low
+MER00210,Choudhary-Upadhyay,E-commerce,Corporate,9987128148,choudhary-upadhyay210@merchant.com,293522455141ZP,81,Pradhan,Sirsa,Madhya Pradesh,276588,India,Inactive,2018-01-19,Low
+MER00211,Chandra-Mani,Healthcare,Individual,8084827946,chandra-mani211@merchant.com,516067474611ZL,815,Misra Chowk,Mumbai,Bihar,266360,India,Active,2023-01-17,Low
+MER00212,Ramachandran-Bahl,Travel,Business,9949249933,ramachandran-bahl212@merchant.com,295102118891Z8,507,Rastogi Path,Indore,Kerala,372548,India,Active,2019-05-23,Low
+MER00213,"Sandal, Batra and Sodhi",E-commerce,Individual,7298778025,sandalbatraandsodhi213@merchant.com,576120472341Z0,460,Barad Nagar,Begusarai,Assam,018829,India,Active,2023-10-27,Medium
+MER00214,Dugal-Batta,Healthcare,Individual,9458842543,dugal-batta214@merchant.com,961921326081ZK,51,Rau Marg,Ujjain,Bihar,302907,India,Active,2019-10-16,Low
+MER00215,"Patla, Karpe and Mammen",E-commerce,Business,9587480272,patlakarpeandmammen215@merchant.com,199659993511ZU,661,Yogi,Vellore,Himachal Pradesh,760566,India,Active,2025-08-07,Low
+MER00216,Dewan-Kala,Travel,Business,8924714810,dewan-kala216@merchant.com,734225490911ZT,740,Borde Ganj,Ambala,Chhattisgarh,716591,India,Active,2025-11-30,Low
+MER00217,"Balan, Narang and Grewal",Utilities,Business,7620051463,balannarangandgrewal217@merchant.com,384356371331ZQ,159,Mannan Ganj,Chinsurah,Chhattisgarh,760621,India,Active,2018-12-22,Low
+MER00218,Nazareth-Nair,Retail,Corporate,8623251711,nazareth-nair218@merchant.com,402383652291ZP,616,Sharma Zila,Karawal Nagar,Punjab,372998,India,Active,2023-05-05,Low
+MER00219,Yogi-Seshadri,Healthcare,Business,9688093061,yogi-seshadri219@merchant.com,186942672551ZL,683,Contractor Circle,Tiruvottiyur,Andhra Pradesh,122655,India,Active,2019-12-18,Low
+MER00220,Ram-Warrior,Grocery,Business,7082568922,ram-warrior220@merchant.com,947132742211ZW,133,Arya Nagar,Bhiwani,Uttar Pradesh,294910,India,Active,2021-08-22,Low
+MER00221,"Parmar, Kuruvilla and Pall",E-commerce,Business,9097102221,parmarkuruvillaandpall221@merchant.com,883970700101ZB,456,Ben Ganj,Khandwa,Maharashtra,836698,India,Active,2019-06-12,Low
+MER00222,"Bath, Vaidya and Zachariah",E-commerce,Business,9751690270,bathvaidyaandzachariah222@merchant.com,609278128941Z0,212,Bobal Road,Katni,Meghalaya,144996,India,Active,2018-11-30,Medium
+MER00223,Ranganathan Ltd,Healthcare,Corporate,9361637270,ranganathanltd223@merchant.com,574606992241Z2,35,Dhaliwal,Rajkot,Manipur,953832,India,Active,2026-06-26,Medium
+MER00224,"Luthra, Keer and Dhingra",Grocery,Individual,8881325810,luthrakeeranddhingra224@merchant.com,336146801231ZY,434,Randhawa Marg,Bhalswa Jahangir Pur,West Bengal,009048,India,Active,2018-05-06,Low
+MER00225,Hayer-Pal,Travel,Business,7794015818,hayer-pal225@merchant.com,862704119381ZK,457,Vyas Nagar,Mathura,Nagaland,360897,India,Active,2019-11-08,Low
+MER00226,Guha Ltd,Grocery,Business,7011820219,guhaltd226@merchant.com,222541736291ZQ,743,Kakar Zila,Hubli–Dharwad,Sikkim,883138,India,Active,2023-11-16,Medium
+MER00227,Parikh-Magar,Fuel,Corporate,9763099859,parikh-magar227@merchant.com,406801300651ZX,681,Barad Street,Pudukkottai,Kerala,521878,India,Active,2024-09-13,Low
+MER00228,Bobal-Kumar,Grocery,Business,7951882899,bobal-kumar228@merchant.com,365706292191ZO,420,Datta Chowk,Nagercoil,Uttarakhand,253113,India,Active,2023-07-03,Low
+MER00229,"Nazareth, Vala and Vig",Restaurant,Corporate,7895056943,nazarethvalaandvig229@merchant.com,728207187431ZM,590,Bobal Marg,Dewas,Maharashtra,265918,India,Active,2022-10-04,Medium
+MER00230,Sami-Pau,Healthcare,Business,9218437676,sami-pau230@merchant.com,538967500301ZZ,340,Pau Street,Dharmavaram,Manipur,472331,India,Active,2021-05-02,Low
+MER00231,"Shere, Nanda and Bath",Grocery,Business,8577769834,sherenandaandbath231@merchant.com,268511645211ZO,355,Varkey Road,Farrukhabad,Jharkhand,615444,India,Active,2023-06-06,Low
+MER00232,Kapadia-Dhawan,E-commerce,Business,8018654588,kapadia-dhawan232@merchant.com,615006969991ZV,5,Dhaliwal Circle,Allahabad,West Bengal,862414,India,Active,2023-06-29,Low
+MER00233,Om-Bhardwaj,Travel,Business,7704848760,om-bhardwaj233@merchant.com,335517385021ZC,772,Borah Zila,Haridwar,Kerala,889648,India,Active,2018-05-23,High
+MER00234,Thaker Group,Travel,Business,8225765443,thakergroup234@merchant.com,363315641311ZT,484,Khatri Ganj,Tiruppur,Goa,237311,India,Active,2022-12-22,Low
+MER00235,Iyengar Ltd,Utilities,Business,9399129808,iyengarltd235@merchant.com,523251122411ZC,432,Bail Path,Sonipat,Bihar,304123,India,Active,2024-05-12,Low
+MER00236,"Wali, Mistry and Narayan",Education,Business,8832617847,walimistryandnarayan236@merchant.com,993528054741ZH,196,Raju Circle,Danapur,Gujarat,411931,India,Active,2023-02-08,Low
+MER00237,Lal and Sons,Restaurant,Individual,9979615282,lalandsons237@merchant.com,846332083531ZR,846,Sehgal Path,Junagadh,Himachal Pradesh,499387,India,Active,2019-04-18,Low
+MER00238,"Gandhi, Andra and Sundaram",Retail,Business,7361172023,gandhiandraandsundaram238@merchant.com,993179453801ZT,564,Aggarwal Street,Tadepalligudem,Mizoram,116368,India,Active,2019-03-24,Low
+MER00239,Deol-Rege,Retail,Business,8948487449,deol-rege239@merchant.com,998205666321ZB,949,Ramanathan Chowk,Howrah,Mizoram,330510,India,Active,2022-04-15,Low
+MER00240,"Kadakia, Padmanabhan and Sen",Education,Individual,7850104026,kadakiapadmanabhanandsen240@merchant.com,784588112941ZP,734,Mukhopadhyay Marg,Rampur,Sikkim,314772,India,Active,2018-12-05,Low
+MER00241,Dada PLC,Travel,Business,8750800158,dadaplc241@merchant.com,657834683741ZV,724,Dash Road,Hyderabad,Uttarakhand,173351,India,Active,2026-03-14,Low
+MER00242,Kaur and Sons,Entertainment,Individual,7979160040,kaurandsons242@merchant.com,383276310991Z6,597,Goswami Street,Bhalswa Jahangir Pur,Mizoram,297541,India,Active,2023-07-22,Low
+MER00243,Hari Inc,Retail,Individual,7981881220,hariinc243@merchant.com,207764909491ZY,535,Kalita Street,Noida,Nagaland,866513,India,Active,2020-04-11,Low
+MER00244,Bora Inc,Travel,Business,8251646006,borainc244@merchant.com,167572058231ZN,551,Ravel,Kollam,Uttar Pradesh,006537,India,Active,2026-06-19,High
+MER00245,Dhar-Bose,Travel,Corporate,9921970686,dhar-bose245@merchant.com,868637586321ZR,491,Pillay Ganj,Machilipatnam,Odisha,509026,India,Active,2022-02-15,Low
+MER00246,"Garg, Misra and Parsa",Grocery,Corporate,7875725245,gargmisraandparsa246@merchant.com,313381954351ZM,364,Chander Nagar,Eluru,Telangana,012906,India,Active,2018-10-08,Low
+MER00247,"Dugal, Gupta and Saxena",Entertainment,Business,9196532467,dugalguptaandsaxena247@merchant.com,307540366951ZF,720,Ravel Circle,Dhanbad,Meghalaya,296408,India,Active,2025-11-28,Low
+MER00248,Sama-Balan,E-commerce,Business,9901242694,sama-balan248@merchant.com,128977478961ZI,216,Parmar Chowk,Aurangabad,Meghalaya,027291,India,Active,2022-02-10,Low
+MER00249,"Setty, Lata and Buch",Grocery,Individual,7448906642,settylataandbuch249@merchant.com,914619119321Z3,616,Kota Zila,Adoni,Madhya Pradesh,605909,India,Active,2024-04-18,Low
+MER00250,"Nadig, Bajaj and Soni",Grocery,Corporate,7569997149,nadigbajajandsoni250@merchant.com,659887214511ZN,982,Hayer Ganj,Mathura,Telangana,641040,India,Active,2018-07-29,Low
+MER00251,Sen-Deshmukh,Restaurant,Business,8039461755,sen-deshmukh251@merchant.com,861208124261Z8,94,Ratta Marg,Bhopal,Madhya Pradesh,727080,India,Active,2021-09-07,Low
+MER00252,"Kari, Doctor and Karan",Restaurant,Individual,7978178349,karidoctorandkaran252@merchant.com,311341935171ZJ,256,Kar Road,Moradabad,Goa,037417,India,Active,2026-04-25,Low
+MER00253,Brahmbhatt-Rattan,Restaurant,Individual,7724533501,brahmbhatt-rattan253@merchant.com,233869092151ZC,124,Manne Circle,Sambalpur,Nagaland,929782,India,Active,2019-11-04,Low
+MER00254,"Sundaram, Kota and Atwal",Education,Business,7682997980,sundaramkotaandatwal254@merchant.com,414365115201ZF,299,Dani Marg,Bahraich,Gujarat,002222,India,Active,2019-01-04,Low
+MER00255,Batra-Dugal,Restaurant,Business,8300949419,batra-dugal255@merchant.com,692145289551ZB,2,Wadhwa,Darbhanga,Telangana,368104,India,Active,2022-07-27,Low
+MER00256,Sha-Sama,Utilities,Business,9444129886,sha-sama256@merchant.com,141560992341ZR,641,Brahmbhatt Ganj,Malda,Assam,283907,India,Active,2024-07-27,Medium
+MER00257,Tandon and Sons,E-commerce,Individual,9450906709,tandonandsons257@merchant.com,746307101841Z2,466,Goda Ganj,Rohtak,Punjab,070798,India,Active,2020-10-10,Low
+MER00258,"Chauhan, Parekh and Deshpande",Fuel,Business,8309744940,chauhanparekhanddeshpande258@merchant.com,696527261621ZI,46,Subramanian Chowk,Pondicherry,Arunachal Pradesh,792750,India,Active,2021-11-30,Low
+MER00259,"Prakash, Samra and Nagi",Retail,Business,8341528117,prakashsamraandnagi259@merchant.com,965470112011ZW,117,Joshi Nagar,Agartala,West Bengal,595957,India,Active,2019-03-21,Medium
+MER00260,Tara-Chahal,Retail,Business,7545485561,tara-chahal260@merchant.com,803953796121ZW,719,Dayal Path,Bardhaman,Assam,918140,India,Active,2022-12-27,Medium
+MER00261,"Patla, Vyas and Agrawal",Fuel,Business,8656832414,patlavyasandagrawal261@merchant.com,117281038431Z3,42,Vasa Road,Gorakhpur,Meghalaya,427642,India,Active,2025-02-12,Low
+MER00262,"Bansal, Bhat and Bhasin",Restaurant,Business,9140109338,bansalbhatandbhasin262@merchant.com,376598602931Z0,341,Kant Path,Gwalior,Jharkhand,199003,India,Active,2023-05-13,Low
+MER00263,Krish-Venkatesh,Grocery,Business,7928416735,krish-venkatesh263@merchant.com,994743394041ZL,84,Virk Marg,Rewa,Rajasthan,405317,India,Blocked,2025-06-11,Low
+MER00264,Ahuja Group,Restaurant,Business,9325619649,ahujagroup264@merchant.com,314252781001ZM,429,Thaman Circle,Ballia,Uttar Pradesh,576977,India,Active,2025-09-02,Low
+MER00265,Bhavsar-Hayer,Restaurant,Individual,7575020954,bhavsar-hayer265@merchant.com,206201829671ZJ,674,Gokhale Street,Secunderabad,Haryana,219857,India,Active,2022-01-09,Low
+MER00266,Garde-Contractor,E-commerce,Business,7825412061,garde-contractor266@merchant.com,241251984721Z8,457,Bhavsar,Kakinada,Bihar,278316,India,Blocked,2025-02-13,Low
+MER00267,"Jhaveri, Wali and Butala",E-commerce,Corporate,9382083676,jhaveriwaliandbutala267@merchant.com,238762077111ZA,910,Bhatt,Kamarhati,Gujarat,435708,India,Active,2018-11-03,Low
+MER00268,"Sant, Gokhale and Chakraborty",Travel,Individual,8261937789,santgokhaleandchakraborty268@merchant.com,729049726361Z5,853,Khalsa Circle,Vijayawada,Gujarat,809833,India,Active,2024-03-11,Medium
+MER00269,"Sarin, Ram and Warrior",Utilities,Business,9119500121,sarinramandwarrior269@merchant.com,244579215881ZQ,733,Bhargava Ganj,Mirzapur,Jharkhand,454906,India,Active,2023-04-14,Low
+MER00270,Dayal-More,Retail,Corporate,8285859371,dayal-more270@merchant.com,131187384981Z8,544,Narula,Ulhasnagar,Punjab,158215,India,Active,2026-01-07,Medium
+MER00271,"Majumdar, Kalita and Sastry",Education,Business,9596968435,majumdarkalitaandsastry271@merchant.com,642187287741Z3,36,Bajwa Nagar,Jamshedpur,Punjab,289428,India,Active,2024-03-21,Low
+MER00272,Anand-Johal,E-commerce,Business,7341213533,anand-johal272@merchant.com,774844572961Z0,790,Sidhu Path,Jehanabad,Bihar,884715,India,Active,2021-07-05,Medium
+MER00273,Mandal Group,Retail,Individual,8047468899,mandalgroup273@merchant.com,621360977661ZZ,692,Bora Street,Bhopal,Telangana,066810,India,Active,2023-11-13,Low
+MER00274,"Halder, Mannan and Karan",Fuel,Individual,9488289252,haldermannanandkaran274@merchant.com,427736749641ZU,120,Sarraf Street,Bhavnagar,Sikkim,909887,India,Active,2025-08-10,Low
+MER00275,Atwal-Chaudhuri,Retail,Business,8883674176,atwal-chaudhuri275@merchant.com,213764363701Z4,528,Iyer,Kulti,Bihar,544769,India,Active,2020-06-10,Low
+MER00276,Ramaswamy LLC,Travel,Business,8369840576,ramaswamyllc276@merchant.com,433044029761ZV,6,Goda Nagar,Kalyan-Dombivli,West Bengal,389819,India,Active,2023-10-18,Low
+MER00277,"Dhawan, Kara and Gera",Travel,Individual,9836747503,dhawankaraandgera277@merchant.com,522948729531Z7,739,Modi Circle,Siwan,Kerala,634332,India,Active,2024-12-19,Low
+MER00278,Bhalla LLC,Grocery,Business,7538189494,bhallallc278@merchant.com,743781201841ZK,947,Merchant Street,Raichur,Rajasthan,213122,India,Active,2026-04-23,Low
+MER00279,Chahal-Narula,Utilities,Individual,9086389625,chahal-narula279@merchant.com,195298683371ZJ,359,Sahni Chowk,Raebareli,Meghalaya,154171,India,Active,2018-09-23,Low
+MER00280,Ahluwalia PLC,Healthcare,Individual,8017572214,ahluwaliaplc280@merchant.com,124197405771ZZ,366,Sen,Ghaziabad,Tripura,512706,India,Active,2023-08-28,Medium
+MER00281,Nanda-Ravel,Utilities,Business,8501524056,nanda-ravel281@merchant.com,944065249581ZI,367,Chakraborty Nagar,Raipur,Uttar Pradesh,709145,India,Active,2020-10-24,Medium
+MER00282,"Andra, Grewal and Som",Restaurant,Business,8601833559,andragrewalandsom282@merchant.com,203512904631ZD,135,Sengupta Chowk,Nanded,Jharkhand,738095,India,Active,2022-07-06,Low
+MER00283,"Thakkar, Chhabra and Bir",Retail,Business,7274193921,thakkarchhabraandbir283@merchant.com,468866269481Z4,793,Sane Ganj,Surat,Rajasthan,893121,India,Active,2024-11-09,Low
+MER00284,"Padmanabhan, Ravi and Sangha",Entertainment,Individual,9699553872,padmanabhanraviandsangha284@merchant.com,612739066471ZE,162,Halder Chowk,Mirzapur,Odisha,954667,India,Active,2020-02-01,Low
+MER00285,"Kala, Borde and Patla",E-commerce,Individual,7689708143,kalabordeandpatla285@merchant.com,757919294951Z8,827,Som Chowk,Ballia,Haryana,694121,India,Active,2021-04-16,Low
+MER00286,Baral-Palan,Healthcare,Business,7184858042,baral-palan286@merchant.com,816355264491ZQ,258,Bhavsar Zila,Rampur,Mizoram,754087,India,Active,2019-10-26,Low
+MER00287,Soni-Chakraborty,Healthcare,Individual,9956149384,soni-chakraborty287@merchant.com,403473432091Z9,647,Dubey Marg,Davanagere,Rajasthan,326696,India,Active,2021-07-18,Medium
+MER00288,Shere-Gill,Retail,Business,9242080300,shere-gill288@merchant.com,718643440351Z3,74,Dash,Medininagar,Arunachal Pradesh,449529,India,Active,2023-03-22,Low
+MER00289,"Thakkar, Gokhale and Sharaf",E-commerce,Business,9318506670,thakkargokhaleandsharaf289@merchant.com,487802259691Z6,413,Warrior Zila,Tiruvottiyur,Sikkim,299196,India,Active,2021-05-02,Low
+MER00290,"Keer, Sehgal and More",Retail,Business,9314299679,keersehgalandmore290@merchant.com,652100079181ZG,520,Lad Street,Visakhapatnam,Uttarakhand,079551,India,Active,2025-09-04,Low
+MER00291,"Narayan, Sandal and Agrawal",Fuel,Business,7049516981,narayansandalandagrawal291@merchant.com,315661372681ZA,365,Seth Nagar,Vadodara,Telangana,080138,India,Active,2020-03-15,Medium
+MER00292,"Chopra, Pandey and Saran",Grocery,Business,7664441797,choprapandeyandsaran292@merchant.com,799995040011ZI,428,Sharaf Road,Jaunpur,Sikkim,290498,India,Inactive,2020-10-06,Medium
+MER00293,Yadav Inc,Grocery,Business,8412601869,yadavinc293@merchant.com,324503442411ZY,412,Taneja Path,Mango,Karnataka,206640,India,Active,2021-12-14,Medium
+MER00294,"Mistry, Bala and Mutti",Retail,Corporate,9201200323,mistrybalaandmutti294@merchant.com,606721964641Z0,392,Lalla Path,Khora ,Punjab,833574,India,Active,2018-06-20,Low
+MER00295,"Bhatia, Narula and Dhingra",Fuel,Individual,9798866977,bhatianarulaanddhingra295@merchant.com,583754205831ZV,510,Halder Marg,Fatehpur,Haryana,040884,India,Active,2025-03-05,Low
+MER00296,Gola-Prashad,Retail,Business,9183347370,gola-prashad296@merchant.com,799563539451ZQ,115,Dubey,Morbi,Mizoram,192544,India,Active,2026-05-14,Low
+MER00297,Wable Ltd,Restaurant,Corporate,9675039887,wableltd297@merchant.com,466194022891ZL,321,Kumar,Malda,Tamil Nadu,235408,India,Active,2024-02-28,Low
+MER00298,"Prashad, Narasimhan and Sampath",Healthcare,Business,8831339244,prashadnarasimhanandsampath298@merchant.com,866341818631ZA,894,Warrior Circle,Karawal Nagar,Jharkhand,019248,India,Active,2021-02-17,Low
+MER00299,"Wable, Tak and Khosla",Education,Individual,9302645269,wabletakandkhosla299@merchant.com,672150863141ZV,923,Barad Chowk,Nashik,Telangana,725818,India,Active,2024-01-13,Low
+MER00300,Rama PLC,E-commerce,Business,8863207225,ramaplc300@merchant.com,946077439991ZC,726,Hari Ganj,Thrissur,Andhra Pradesh,287156,India,Active,2020-10-10,Low
