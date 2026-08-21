@@ -90,7 +90,7 @@ JOIN branches b
 GROUP BY b.branch_code
 ORDER BY SUM(a.balance) DESC;
 
--- Find out heighest balance from each brancj
+-- Find out heighest balance from each branch
 
 WITH ranked_accounts AS (
     SELECT
@@ -118,3 +118,98 @@ FROM ranked_accounts
 WHERE account_rank = 1
 ORDER BY branch_code;
 
+--  Find each consumers total transactions, total transaction amount and average transaction amount.
+
+SELECT
+    c.customer_id,
+    c.customer_name,
+    COUNT(t.transaction_id) AS total_transactions,
+    SUM(t.amount) AS total_transaction_amount,
+    AVG(t.amount) AS average_transaction_amount
+FROM customers c
+JOIN accounts a
+    ON c.customer_id = a.customer_id
+JOIN transactions t
+    ON a.account_id = t.account_id
+GROUP BY
+    c.customer_id,
+    c.customer_name
+HAVING SUM(t.amount) > 100000
+ORDER BY total_transaction_amount DESC;
+
+--  Find out creadit and debit transactions count and total amount seprately for each consumer.
+SELECT
+    c.customer_id,
+    c.customer_name,
+
+    SUM(
+        CASE
+            WHEN t.transaction_type = 'Credit' THEN 1
+            ELSE 0
+        END
+    ) AS credit_transactions,
+
+    SUM(
+        CASE
+            WHEN t.transaction_type = 'Credit' THEN t.amount
+            ELSE 0
+        END
+    ) AS credit_amount,
+
+    SUM(
+        CASE
+            WHEN t.transaction_type = 'Debit' THEN 1
+            ELSE 0
+        END
+    ) AS debit_transactions,
+
+    SUM(
+        CASE
+            WHEN t.transaction_type = 'Debit' THEN t.amount
+            ELSE 0
+        END
+    ) AS debit_amount
+
+FROM customers c
+JOIN accounts a
+    ON c.customer_id = a.customer_id
+JOIN transactions t
+    ON a.account_id = t.account_id
+
+GROUP BY
+    c.customer_id,
+    c.customer_name;
+
+-- Find out total transactions, total transaction amount and average transaction amount for each transaction type.
+
+select 
+    transaction_type, 
+    count(transaction_id) as total_transactions, 
+    sum(amount) as total_amount ,
+    avg(amount) as average_amount
+from  transactions group by transaction_type order by total_amount desc;
+
+-- Find total transactions and total transaction amount for each month of year 2026
+
+SELECT
+    MONTHNAME(transaction_time) AS month_name,
+    COUNT(transaction_id) AS total_transaction,
+    SUM(amount) AS total_amount
+FROM transactions
+WHERE YEAR(transaction_time) = "2026"
+GROUP BY MONTHNAME(transaction_time)
+ORDER BY total_amount DESC;
+
+-- Find out those transactions where amount is more than ₹1,00,000 and transaction should be successfull.
+SELECT 
+    transaction_id,
+    account_id,
+    transaction_type,
+    amount,
+    transaction_time,
+    transaction_status
+FROM transactions
+WHERE transaction_status = 'Success'
+  AND amount > 100000
+ORDER BY amount DESC
+LIMIT 10;
