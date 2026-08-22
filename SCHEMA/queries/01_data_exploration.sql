@@ -213,3 +213,80 @@ WHERE transaction_status = 'Success'
   AND amount > 100000
 ORDER BY amount DESC
 LIMIT 10;
+
+-- Find out the consumer who have made more than 50 transacstions.
+
+SELECT
+    c.customer_id,
+    c.customer_name,
+    COUNT(t.transaction_id) AS total_transactions
+FROM customers c
+JOIN accounts a
+    ON c.customer_id = a.customer_id
+JOIN transactions t
+    ON a.account_id = t.account_id
+GROUP BY
+    c.customer_id,
+    c.customer_name
+HAVING COUNT(t.transaction_id) > 50
+ORDER BY total_transactions DESC;
+
+
+
+-- Find those account balance is greater than the averga balance of consumer.
+-- 1st query
+SELECT 
+    c.customer_id, 
+    c.customer_name, 
+    SUM(a.balance) AS total_balance
+FROM customers c  
+JOIN accounts a 
+    ON c.customer_id = a.customer_id 
+GROUP BY c.customer_id
+HAVING SUM(a.balance) > (
+    SELECT AVG(balance)
+    FROM accounts
+);
+
+-- 2nd query 
+SELECT
+    c.customer_id,
+    c.customer_name,
+    SUM(a.balance) AS total_balance
+FROM customers c
+JOIN accounts a
+    ON c.customer_id = a.customer_id
+GROUP BY
+    c.customer_id,
+    c.customer_name
+HAVING SUM(a.balance) > (
+    SELECT AVG(customer_balance)
+    FROM (
+        SELECT
+            customer_id,
+            SUM(balance) AS customer_balance
+        FROM accounts
+        GROUP BY customer_id
+    ) AS customer_totals
+)
+ORDER BY total_balance DESC;
+
+-- Find out those consumer who have more maximum transaction amount than the average transaction amount of DB.
+
+SELECT
+    c.customer_id,
+    c.customer_name,
+    MAX(t.amount) AS max_transaction_amount
+FROM customers c
+JOIN accounts a
+    ON c.customer_id = a.customer_id
+JOIN transactions t
+    ON a.account_id = t.account_id
+GROUP BY
+    c.customer_id,
+    c.customer_name
+HAVING MAX(t.amount) > (
+    SELECT AVG(amount)
+    FROM transactions
+)
+ORDER BY max_transaction_amount DESC;
