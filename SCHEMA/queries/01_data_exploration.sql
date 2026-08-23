@@ -1,3 +1,5 @@
+-- --  Data exploration analysis -- --
+
 -- Q1. Total customers and customers having at least one account
 
 SELECT
@@ -7,7 +9,7 @@ SELECT
     (SELECT COUNT(DISTINCT customer_id)
      FROM accounts) AS customers_with_account;
 
--- Find the consumer who has more than 2 bank accounts
+-- Q2. Find the consumer who has more than 2 bank accounts
 
 SELECT
     c.customer_id,
@@ -22,7 +24,7 @@ GROUP BY
 HAVING COUNT(a.account_id) >= 2
 ORDER BY account_count DESC;
 
--- Find the consumer who don't have any bank account.
+-- Q3. Find the consumer who don't have any bank account.
 
 SELECT
     c.customer_id,
@@ -33,12 +35,12 @@ LEFT JOIN accounts a
 WHERE a.customer_id IS NULL
 ORDER BY c.customer_id;
 
--- Each account type and their total balance.
+-- Q4.Each account type and their total balance.
 
 select account_type , count(*) as total_accounts, sum(balance) as total_balance_in_INR
     from accounts group by account_type order by sum(balance);
 
--- Top 5 accounts with heighest balance.
+-- Q5.Top 5 accounts with heighest balance.
 
 select 
     account_id , 
@@ -48,7 +50,7 @@ select
     balance 
 from accounts order by balance desc limit 5;
 
---  Find the consumer who have more than 2 bank accounts and their combined balance is greater than ₹5,00,000.
+--  Q6. Find the consumer who have more than 2 bank accounts and their combined balance is greater than ₹5,00,000.
 SELECT
     c.customer_id,
     c.customer_name,
@@ -64,7 +66,7 @@ HAVING COUNT(a.account_id) >= 2
    AND SUM(a.balance) > 500000
 ORDER BY total_balance DESC;
 
--- Categorize the accounts  on their balance:
+-- Q7.Categorize the accounts  on their balance:
 SELECT
     account_id,
     account_number,
@@ -77,7 +79,7 @@ SELECT
 FROM accounts
 ORDER BY balance DESC;
 
--- Find out total accounts , total balance and average account balance for each balance.
+--Q8.  Find out total accounts , total balance and average account balance for each balance.
 
 SELECT
     b.branch_code,
@@ -90,7 +92,7 @@ JOIN branches b
 GROUP BY b.branch_code
 ORDER BY SUM(a.balance) DESC;
 
--- Find out heighest balance from each branch
+--Q9. Find out heighest balance from each branch
 
 WITH ranked_accounts AS (
     SELECT
@@ -118,7 +120,7 @@ FROM ranked_accounts
 WHERE account_rank = 1
 ORDER BY branch_code;
 
---  Find each consumers total transactions, total transaction amount and average transaction amount.
+--Q10.  Find each consumers total transactions, total transaction amount and average transaction amount.
 
 SELECT
     c.customer_id,
@@ -137,7 +139,7 @@ GROUP BY
 HAVING SUM(t.amount) > 100000
 ORDER BY total_transaction_amount DESC;
 
---  Find out creadit and debit transactions count and total amount seprately for each consumer.
+--Q11.  Find out creadit and debit transactions count and total amount seprately for each consumer.
 SELECT
     c.customer_id,
     c.customer_name,
@@ -180,7 +182,7 @@ GROUP BY
     c.customer_id,
     c.customer_name;
 
--- Find out total transactions, total transaction amount and average transaction amount for each transaction type.
+--Q12. Find out total transactions, total transaction amount and average transaction amount for each transaction type.
 
 select 
     transaction_type, 
@@ -189,7 +191,7 @@ select
     avg(amount) as average_amount
 from  transactions group by transaction_type order by total_amount desc;
 
--- Find total transactions and total transaction amount for each month of year 2026
+--Q13. Find total transactions and total transaction amount for each month of year 2026
 
 SELECT
     MONTHNAME(transaction_time) AS month_name,
@@ -200,7 +202,7 @@ WHERE YEAR(transaction_time) = "2026"
 GROUP BY MONTHNAME(transaction_time)
 ORDER BY total_amount DESC;
 
--- Find out those transactions where amount is more than ₹1,00,000 and transaction should be successfull.
+--Q14. Find out those transactions where amount is more than ₹1,00,000 and transaction should be successfull.
 SELECT 
     transaction_id,
     account_id,
@@ -214,7 +216,7 @@ WHERE transaction_status = 'Success'
 ORDER BY amount DESC
 LIMIT 10;
 
--- Find out the consumer who have made more than 50 transacstions.
+--Q15. Find out the consumer who have made more than 50 transacstions.
 
 SELECT
     c.customer_id,
@@ -231,15 +233,15 @@ GROUP BY
 HAVING COUNT(t.transaction_id) > 50
 ORDER BY total_transactions DESC;
 
+------ INTERMEDIATE SQL QUERIES -----
 
-
--- Find those account balance is greater than the averga balance of consumer.
+--Q16. Find those account balance is greater than the averga balance of consumer.
 -- 1st query
 SELECT 
     c.customer_id, 
     c.customer_name, 
     SUM(a.balance) AS total_balance
-FROM customers c  
+FROM customers c   
 JOIN accounts a 
     ON c.customer_id = a.customer_id 
 GROUP BY c.customer_id
@@ -271,7 +273,7 @@ HAVING SUM(a.balance) > (
 )
 ORDER BY total_balance DESC;
 
--- Find out those consumer who have more maximum transaction amount than the average transaction amount of DB.
+--Q17. Find out those consumer who have more maximum transaction amount than the average transaction amount of DB.
 
 SELECT
     c.customer_id,
@@ -290,3 +292,148 @@ HAVING MAX(t.amount) > (
     FROM transactions
 )
 ORDER BY max_transaction_amount DESC;
+
+-- Q18. Find out those consumer whose transaction amount than the average tranaction amount of consumer.
+
+select
+    c.customer_id , 
+    c.customer_name ,
+    sum(t.amount) as total_transaction_amount
+from customers c
+join accounts a 
+    on c.customer_id = a.customer_id 
+join transactions t
+    on a.account_id = t.account_id
+group by 
+    c.customer_id ,
+    c.customer_name 
+having sum(t.amount) > 
+(SELECT AVG(customer_total)
+FROM (
+    SELECT
+        c.customer_id,
+        SUM(t.amount) AS customer_total
+    FROM customers c
+    JOIN accounts a
+        ON c.customer_id = a.customer_id
+    JOIN transactions t
+        ON a.account_id = t.account_id
+    GROUP BY c.customer_id
+) AS customer_totals)
+order by total_transaction_amount desc;
+
+--Q19. Rank the consumer on the basis of their transactions. Heighest transaction amount of consumer must be 1.
+select 
+	c.customer_id ,
+	c.customer_name , 
+    t.transaction_id , 
+	t.amount, 
+	row_number() over(partition by c.customer_id order by t.amount desc) as transaction_rank
+from customers c 
+join accounts a 
+	on c.customer_id = a.customer_id 
+join transactions t 
+	on a.account_id = t.account_id ;
+
+--Q20. Find out high transaction amount made by consumer.
+
+WITH high_transaction AS (
+    SELECT
+        c.customer_id,
+        c.customer_name,
+        t.transaction_id,
+        t.amount,
+        t.transaction_time,
+        ROW_NUMBER() OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.amount DESC
+        ) AS rnk
+    FROM customers c
+    JOIN accounts a
+        ON c.customer_id = a.customer_id
+    JOIN transactions t
+        ON a.account_id = t.account_id
+)
+
+SELECT
+    customer_id,
+    customer_name,
+    transaction_id,
+    amount,
+    transaction_time
+FROM high_transaction
+WHERE rnk = 1
+ORDER BY amount DESC;
+
+--Q21 Find out those consumer who have made more than 2 transactions in a day.
+
+select 
+    c.customer_id , 
+    c.customer_name , 
+    date(t.transaction_time) as transaction_date, 
+    count(t.transaction_id) as total_transactions,
+    sum(t.amount) as total_transaction_amount
+from customers c 
+join accounts a 
+    on c.customer_id = a.customer_id 
+join transactions t 
+    on t.account_id = a.account_id 
+group by 
+    c.customer_id ,
+    c.customer_name ,
+    date(t.transaction_time) 
+having count(t.transaction_id) > 2;
+
+-- Q22 Find the total account balance for each consumer in each branch.
+
+select 
+    c.customer_id , 
+    c.customer_name , 
+    date(t.transaction_time) as transaction_date, 
+    count(t.transaction_id) as total_transactions,
+    sum(t.amount) as total_transaction_amount
+from customers c 
+join accounts a 
+    on c.customer_id = a.customer_id 
+join transactions t 
+    on t.account_id = a.account_id 
+group by 
+    c.customer_id ,
+    c.customer_name ,
+    date(t.transaction_time) 
+having count(t.transaction_id) > 2;
+
+-- Q22 Find the total account balance for each consumer in each branch.
+
+WITH customer_balances AS (
+    SELECT
+        b.branch_id,
+        b.branch_code,
+        c.customer_id,
+        c.customer_name,
+        SUM(a.balance) AS total_balance
+    FROM customers c
+    JOIN accounts a
+        ON c.customer_id = a.customer_id
+    JOIN branches b
+        ON b.branch_id = a.branch_id
+    GROUP BY
+        b.branch_id,
+        b.branch_code,
+        c.customer_id,
+        c.customer_name
+)
+
+SELECT
+    branch_code,
+    customer_id,
+    customer_name,
+    total_balance,
+    RANK() OVER (
+        PARTITION BY branch_id
+        ORDER BY total_balance DESC
+    ) AS balance_rank
+FROM customer_balances
+ORDER BY
+    branch_code,
+    balance_rank;
