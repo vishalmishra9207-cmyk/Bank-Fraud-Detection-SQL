@@ -437,3 +437,76 @@ FROM customer_balances
 ORDER BY
     branch_code,
     balance_rank;
+
+
+-- Q23 Find top 3 customers for each branch by their total balance.
+WITH customer_branch_balance AS (
+    SELECT
+        b.branch_id,
+        b.branch_code,
+        c.customer_id,
+        c.customer_name,
+        SUM(a.balance) AS total_balance
+    FROM customers c
+    JOIN accounts a
+        ON c.customer_id = a.customer_id
+    JOIN branches b
+        ON a.branch_id = b.branch_id
+    GROUP BY
+        b.branch_id,
+        b.branch_code,
+        c.customer_id,
+        c.customer_name
+),
+
+ranked_customers AS (
+    SELECT
+        branch_code,
+        customer_id,
+        customer_name,
+        total_balance,
+        RANK() OVER (
+            PARTITION BY branch_code
+            ORDER BY total_balance DESC
+        ) AS balance_rnk
+    FROM customer_branch_balance
+)
+
+SELECT
+    branch_code,
+    customer_id,
+    customer_name,
+    total_balance,
+    balance_rnk
+FROM ranked_customers
+WHERE balance_rnk <= 3
+ORDER BY branch_code, balance_rnk;
+
+-- Q24 Calculate the total transaction amount for each month of 2026 and determine the increase or decrease in the transaction amount compared to the previous month.
+
+WITH monthly_transactions AS (
+    SELECT
+        MONTH(transaction_time) AS transaction_month,
+        SUM(amount) AS total_amount
+    FROM transactions
+    WHERE YEAR(transaction_time) = 2026
+    GROUP BY MONTH(transaction_time)
+),
+
+monthly_with_previous AS (
+    SELECT
+        transaction_month,
+        total_amount,
+        LAG(total_amount) OVER (
+            ORDER BY transaction_month
+        ) AS previous_month_amount
+    FROM monthly_transactions
+)
+
+SELECT
+    transaction_month,
+    total_amount,
+    previous_month_amount,
+    total_amount - previous_month_amount AS amount_difference
+FROM monthly_with_previous
+ORDER BY transaction_month;
