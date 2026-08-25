@@ -510,3 +510,78 @@ SELECT
     total_amount - previous_month_amount AS amount_difference
 FROM monthly_with_previous
 ORDER BY transaction_month;
+
+# Calculate the total transaction amount for each month of 2026 and determine the percentage change compared to the previous month.
+WITH monthly_transactions AS (
+    SELECT
+        MONTH(transaction_time) AS transaction_month,
+        SUM(amount) AS total_amount
+    FROM transactions
+    WHERE YEAR(transaction_time) = 2026
+    GROUP BY MONTH(transaction_time)
+),
+
+monthly_with_previous AS (
+    SELECT
+        transaction_month,
+        total_amount,
+        LAG(total_amount) OVER (
+            ORDER BY transaction_month
+        ) AS previous_month_amount
+    FROM monthly_transactions
+)
+
+SELECT
+    transaction_month,
+    total_amount,
+    previous_month_amount,
+    round((total_amount - previous_month_amount) / previous_month_amount * 100, 2)  AS amount_difference_in_percent
+FROM monthly_with_previous
+ORDER BY transaction_month;
+
+-- -- View each customer's transactions in chronological order and calculate the 
+-- cumulative (running) transaction amount for that customer after each transaction.
+
+SELECT 
+    c.customer_id, 
+    c.customer_name,
+    t.transaction_id,
+    t.transaction_time,
+    t.amount,
+    SUM(t.amount) OVER (
+        PARTITION BY c.customer_id
+        ORDER BY t.transaction_time
+    ) AS running_total
+FROM customers c
+JOIN accounts a 
+    ON c.customer_id = a.customer_id
+JOIN transactions t 
+    ON t.account_id = a.account_id;
+
+-- Q27 — Customer's Highest Transaction vs Current Transaction.
+
+WITH customer_transactions AS (
+    SELECT 
+        c.customer_id,
+        c.customer_name,
+        t.transaction_id,
+        t.amount,
+        FIRST_VALUE(t.amount) OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.amount DESC
+        ) AS highest_transaction_amount
+    FROM customers c
+    JOIN accounts a
+        ON c.customer_id = a.customer_id
+    JOIN transactions t
+        ON t.account_id = a.account_id
+)
+
+SELECT
+    customer_id,
+    customer_name,
+    transaction_id,
+    amount,
+    highest_transaction_amount,
+    highest_transaction_amount - amount AS difference_from_highest
+FROM customer_transactions;
