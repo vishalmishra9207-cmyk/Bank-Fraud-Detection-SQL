@@ -585,3 +585,50 @@ SELECT
     highest_transaction_amount,
     highest_transaction_amount - amount AS difference_from_highest
 FROM customer_transactions;
+
+-- Q28 — Customer Balance Segmentation
+
+with customer_balance_segment as (
+    select 
+        c.customer_id , 
+        c.customer_name , 
+        sum(a.balance) as total_balance
+        from customers c 
+		join accounts a 
+            on c.customer_id = a.customer_id 
+		group by 
+            c.customer_id,
+            c.customer_name	
+)
+select 
+    customer_id , 
+    customer_name, 
+    total_balance ,
+    ntile (4) over (
+        order by total_balance desc
+			) as balance_quartile
+from customer_balance_segment ;
+ 
+
+-- Q30 — Customers with Increasing Transaction Activity
+
+WITH increasing_transactions AS (
+    SELECT 
+        c.customer_id,
+        c.customer_name,
+        t.transaction_id,
+        t.amount,
+        t.transaction_time,
+        ROW_NUMBER() OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.transaction_time DESC
+        ) AS rnk
+    FROM customers c
+    JOIN accounts a 
+        ON c.customer_id = a.customer_id
+    JOIN transactions t 
+        ON a.account_id = t.account_id
+)
+SELECT *
+FROM increasing_transactions
+WHERE rnk <= 3;
