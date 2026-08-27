@@ -632,3 +632,89 @@ WITH increasing_transactions AS (
 SELECT *
 FROM increasing_transactions
 WHERE rnk <= 3;
+
+
+-- Q31 — Customer Transaction Anomaly
+
+with consumer_transaction as (
+    select 
+        c.customer_id , 
+        c.customer_name, 
+        t.transaction_id , 
+        t.amount,
+        avg(t.amount) over (
+            partition by c.customer_id
+            ) as average_transaction_amount
+		from customers c 
+        join accounts a 
+            on c.customer_id = a.customer_id 
+		join transactions t 
+            on a.account_id = t.account_id 
+) 
+select 
+    customer_id ,
+    customer_name, 
+    amount , 
+    average_transaction_amount
+from consumer_transaction
+    where amount > average_transaction_amount * 2.5  ;
+
+-- Q32 — Suspicious High-Value Transactions
+
+with suspicious_transaction as (
+    select 
+        c.customer_id ,
+        t.account_id ,
+        t.transaction_id ,
+        t.amount , 
+        t.transaction_time ,
+        avg(t.amount) over (
+		    partition by t.account_id 
+            ) as average_successful_amount
+		from customers c 
+        join accounts a 
+            on a.customer_id = c.customer_id 
+		join transactions t 
+            on t.account_id = a.account_id 
+		where t.transaction_status = "Success" 
+)
+select  
+    customer_id ,
+    account_id ,
+    transaction_id ,
+    amount ,
+    average_successful_amount ,
+    transaction_time 
+from  suspicious_transaction 
+where amount > 100000   
+    AND amount > average_successful_amount * 2 ;
+
+-- Q33 — Top 3 High-Value Transactions per Customer 
+
+with high_value_transaction as (
+    select 
+        c.customer_id , 
+        c.customer_name,
+        t.transaction_id ,
+        t.amount , 
+        t.transaction_time ,
+        row_number () over (partition by c.customer_id
+            order by t.amount desc
+            ) as transaction_rank 
+		from customers c 
+        join accounts a 
+            on c.customer_id = a.customer_id 
+		join transactions t 
+            on t.account_id = a.account_id 
+		where t.transaction_status = "Success"
+) 
+select 
+    customer_id ,
+    customer_name , 
+    transaction_id , 
+    amount ,
+    transaction_rank,
+    transaction_time 
+from high_value_transaction 
+where transaction_rank <=3 ;
+
