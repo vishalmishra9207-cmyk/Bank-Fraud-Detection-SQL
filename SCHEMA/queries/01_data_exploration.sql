@@ -718,3 +718,107 @@ select
 from high_value_transaction 
 where transaction_rank <=3 ;
 
+--  Q34 — Branch-wise Customer Ranking
+
+with branch_customer_rank as (
+    select 
+        b.branch_code , 
+        c.customer_id ,
+        c.customer_name ,
+        COALESCE(SUM(a.balance), 0) as total_balance 
+        from customers c 
+        left join accounts a 
+            on c.customer_id = a.customer_id 
+		left join branches b 
+            on a.branch_id = b.branch_id 
+		group by 
+            b.branch_code ,
+            c.customer_id ,
+            c.customer_name
+) 
+select 
+    branch_code , 
+    customer_id ,
+    customer_name, 
+    total_balance , 
+    dense_rank () over (partition by 
+        branch_code order by total_balance desc
+        ) as balance_rank
+from branch_customer_rank ;
+
+-- Q35 — Customers With No Transactions
+
+select 
+    c.customer_id ,
+    c.customer_name ,
+    count(t.transaction_id) as total_transaction,
+    coalesce(sum(t.amount),0) as total_transaction_amount 
+from customers c 
+left join accounts a 
+    on c.customer_id = a.customer_id 
+left join transactions t 
+    on a.account_id = t.account_id 
+group by 
+    c.customer_id , 
+    c.customer_name ;
+
+
+--  Q36 — Branch Fraud Leaderboard
+
+WITH bank_fraud_leaderboard AS (
+    SELECT 
+        b.branch_code,
+        b.branch_id,
+        SUM(
+            CASE 
+                WHEN t.is_fraud = TRUE THEN 1
+                ELSE 0
+            END
+        ) AS fraud_transaction_count,
+        SUM(
+            CASE 
+                WHEN t.is_fraud = TRUE THEN t.amount
+                ELSE 0
+            END
+        ) AS total_fraud_amount
+    FROM branches b
+    LEFT JOIN accounts a
+        ON b.branch_id = a.branch_id
+    LEFT JOIN transactions t
+        ON a.account_id = t.account_id
+    GROUP BY
+        b.branch_code,
+        b.branch_id
+)
+
+SELECT
+    branch_code,
+    branch_id,
+    fraud_transaction_count,
+    total_fraud_amount,
+    DENSE_RANK() OVER (
+        ORDER BY total_fraud_amount DESC
+    ) AS fraud_rank
+FROM bank_fraud_leaderboard;
+
+
+-- Q37 — Branches With Active Customers
+
+WITH branch_active_customers AS (
+    SELECT
+        b.branch_code,
+        COUNT(DISTINCT a.customer_id) AS active_customer_count
+    FROM branches b
+    LEFT JOIN accounts a
+        ON b.branch_id = a.branch_id
+        AND a.account_status = 'Active'
+    GROUP BY b.branch_code
+)
+
+SELECT
+    branch_code,
+    active_customer_count,
+    DENSE_RANK() OVER (
+        ORDER BY active_customer_count DESC
+    ) AS branch_rank
+FROM branch_active_customers;
