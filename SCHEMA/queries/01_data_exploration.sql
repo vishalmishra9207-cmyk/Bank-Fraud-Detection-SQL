@@ -822,3 +822,89 @@ SELECT
         ORDER BY active_customer_count DESC
     ) AS branch_rank
 FROM branch_active_customers;
+
+-- Q38 — Consecutive Fraud Transactions
+
+WITH consecutive_fraud AS (
+    SELECT
+        c.customer_id,
+        c.customer_name,
+        t.transaction_id,
+        t.transaction_time,
+        t.is_fraud,
+
+        LAG(t.is_fraud) OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.transaction_time
+        ) AS previous_is_fraud
+
+    FROM customers c
+    JOIN accounts a
+        ON c.customer_id = a.customer_id
+    JOIN transactions t
+        ON a.account_id = t.account_id
+)
+
+SELECT
+    customer_id,
+    customer_name,
+    transaction_id AS fraud_transaction_id,
+    transaction_time AS fraud_transaction_time
+FROM consecutive_fraud
+WHERE is_fraud = TRUE
+  AND previous_is_fraud = TRUE;
+
+-- Q39 — Transaction Amount Spike
+
+WITH amount_spike AS (
+    SELECT 
+        c.customer_id,
+        c.customer_name,
+        t.transaction_id,
+        t.transaction_time,
+        t.amount,
+        LAG(t.amount) OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.transaction_time
+        ) AS previous_transaction_amount
+    FROM customers c
+    JOIN accounts a 
+        ON c.customer_id = a.customer_id
+    JOIN transactions t 
+        ON t.account_id = a.account_id
+)
+
+SELECT 
+    customer_id,
+    customer_name,
+    transaction_id,
+    transaction_time,
+    amount,
+    previous_transaction_amount
+FROM amount_spike
+WHERE amount > previous_transaction_amount * 2;
+
+
+-- Q40 — Customers With Fraud Transactions
+
+select 
+    c.customer_id,
+    c.customer_name 
+from customers c 
+where exists (
+    select 1 
+        from accounts a 
+	join transactions t 
+        on a.account_id = t.account_id 
+	where a.customer_id = c.customer_id 
+        and t.is_fraud = true
+)
+and  not exists (
+    select 1 
+    from accounts a 
+    where a.customer_id = c.customer_id 
+    and a.account_status = "Active"
+)
+
+
+
