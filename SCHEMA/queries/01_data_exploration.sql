@@ -906,5 +906,129 @@ and  not exists (
     and a.account_status = "Active"
 )
 
+-- Q41Customers With Multiple Fraud Transactions  
+-- Identify customers who have made two or more fraudulent transactions and whose total fraud amount exceeds ₹50,000 
+
+SELECT
+    c.customer_id,
+    c.customer_name,
+
+    COUNT(
+        CASE
+            WHEN t.is_fraud = TRUE
+            THEN t.transaction_id
+        END
+    ) AS fraud_transaction_count,
+
+    SUM(
+        CASE
+            WHEN t.is_fraud = TRUE
+            THEN t.amount
+            ELSE 0
+        END
+    ) AS total_fraud_amount
+
+FROM customers c
+
+JOIN accounts a
+    ON c.customer_id = a.customer_id
+
+JOIN transactions t
+    ON a.account_id = t.account_id
+
+GROUP BY
+    c.customer_id,
+    c.customer_name
+
+HAVING fraud_transaction_count >= 2
+   AND total_fraud_amount > 50000
+
+ORDER BY total_fraud_amount DESC;
+
+--  Q42 — Customers With Fraud + Large Successful Transaction
+--  Find customers who:
+-- Have at least one fraudulent transaction
+-- Have at least one successful transaction
+-- The total amount of their successful transactions is more than ₹100,000. 
+
+SELECT
+    c.customer_id,
+    c.customer_name,
+
+    COUNT(
+        CASE
+            WHEN t.is_fraud = TRUE
+            THEN t.transaction_id
+        END
+    ) AS fraud_transaction_count,
+
+    COUNT(
+        CASE
+            WHEN t.transaction_status = 'Success'
+            THEN t.transaction_id
+        END
+    ) AS successful_transaction_count,
+
+    SUM(
+        CASE
+            WHEN t.transaction_status = 'Success'
+            THEN t.amount
+            ELSE 0
+        END
+    ) AS successful_transaction_amount
+
+FROM customers c
+
+JOIN accounts a
+    ON c.customer_id = a.customer_id
+
+JOIN transactions t
+    ON a.account_id = t.account_id
+
+GROUP BY
+    c.customer_id,
+    c.customer_name
+
+HAVING fraud_transaction_count >= 1
+   AND successful_transaction_count >= 1
+   AND successful_transaction_amount > 100000
+   
+order by successful_transaction_amount desc;
 
 
+
+-- Q44 — Customers With No Fraud History
+-- Target customers who have never engaged in fraudulent transactions but have at least one successful transaction to their name.
+
+SELECT
+    c.customer_id,
+    c.customer_name,
+
+    COUNT(t.transaction_id) AS successful_transaction_count,
+
+    SUM(t.amount) AS successful_transaction_amount
+
+FROM customers c
+
+JOIN accounts a
+    ON c.customer_id = a.customer_id
+
+JOIN transactions t
+    ON a.account_id = t.account_id
+
+WHERE t.transaction_status = 'Success'
+
+AND NOT EXISTS (
+    SELECT 1
+    FROM accounts a2
+    JOIN transactions t2
+        ON a2.account_id = t2.account_id
+    WHERE a2.customer_id = c.customer_id
+      AND t2.is_fraud = TRUE
+)
+
+GROUP BY
+    c.customer_id,
+    c.customer_name
+
+HAVING COUNT(t.transaction_id) >= 1;
