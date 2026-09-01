@@ -1032,3 +1032,170 @@ GROUP BY
     c.customer_name
 
 HAVING COUNT(t.transaction_id) >= 1;
+
+--  Q45 — Month-over-Month Transaction Growth
+-- Calculate the total successful transaction amount for each month and compute the percentage growth compared to the previous month.
+
+WITH monthly_transactions AS (
+    SELECT
+        MONTH(transaction_time) AS transaction_month,
+        SUM(amount) AS total_amount
+    FROM transactions
+    WHERE transaction_status = 'Success'
+    GROUP BY MONTH(transaction_time)
+),
+
+monthly_with_previous AS (
+    SELECT
+        transaction_month,
+        total_amount,
+        LAG(total_amount) OVER (
+            ORDER BY transaction_month
+        ) AS previous_month_amount
+    FROM monthly_transactions
+)
+
+SELECT
+    transaction_month,
+    total_amount,
+    previous_month_amount,
+    ROUND(
+        (total_amount - previous_month_amount)
+        / previous_month_amount * 100,
+        2
+    ) AS growth_percentage
+FROM monthly_with_previous
+ORDER BY transaction_month;
+
+--  Q46 — Customers Whose Transaction Amount Keeps Increasing
+-- “Identify customers whose amounts continuously increased across three consecutive transactions." 
+
+WITH increasing_transactions AS (
+    SELECT 
+        c.customer_id,
+        c.customer_name,
+        t.amount AS transaction_1_amount,
+
+        LEAD(t.amount, 1) OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.transaction_time
+        ) AS transaction_2_amount,
+
+        LEAD(t.amount, 2) OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.transaction_time
+        ) AS transaction_3_amount
+
+    FROM customers c
+    JOIN accounts a
+        ON c.customer_id = a.customer_id
+    JOIN transactions t
+        ON t.account_id = a.account_id
+)
+
+SELECT 
+    customer_id,
+    customer_name,
+    transaction_1_amount,
+    transaction_2_amount,
+    transaction_3_amount
+FROM increasing_transactions
+WHERE transaction_1_amount < transaction_2_amount
+  AND transaction_2_amount < transaction_3_amount;
+
+
+-- Q47 — Customer Transaction Streak
+-- Target customers who have completed three consecutive transactions, all of which were successful.  
+
+WITH consecutive_success_transaction AS (
+    SELECT
+        c.customer_id,
+        c.customer_name,
+
+        t.transaction_id AS transaction_1_id,
+        t.transaction_status AS transaction_1_status,
+
+        LEAD(t.transaction_id, 1) OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.transaction_time
+        ) AS transaction_2_id,
+
+        LEAD(t.transaction_status, 1) OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.transaction_time
+        ) AS transaction_2_status,
+
+        LEAD(t.transaction_id, 2) OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.transaction_time
+        ) AS transaction_3_id,
+
+        LEAD(t.transaction_status, 2) OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.transaction_time
+        ) AS transaction_3_status
+
+    FROM customers c
+    JOIN accounts a
+        ON a.customer_id = c.customer_id
+    JOIN transactions t
+        ON t.account_id = a.account_id
+)
+
+SELECT
+    customer_id,
+    customer_name,
+    transaction_1_id,
+    transaction_2_id,
+    transaction_3_id
+FROM consecutive_success_transaction
+WHERE transaction_1_status = 'Success'
+  AND transaction_2_status = 'Success'
+  AND transaction_3_status = 'Success';
+
+-- Q48 — Fraud Recovery Analysis
+-- Identify customers who successfully completed their next transaction after a fraudulent one.
+-- And ensure that this subsequent successful transaction is at least twice the amount of the fraudulent transaction. 
+
+WITH fraud_recovery_analysis AS (
+    SELECT
+        c.customer_id,
+        c.customer_name,
+
+        t.transaction_id AS fraud_transaction_id,
+        t.amount AS fraud_amount,
+        t.is_fraud,
+
+        LEAD(t.transaction_id, 1) OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.transaction_time
+        ) AS next_transaction_id,
+
+        LEAD(t.amount, 1) OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.transaction_time
+        ) AS next_transaction_amount,
+
+        LEAD(t.transaction_status, 1) OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.transaction_time
+        ) AS next_transaction_status
+
+    FROM customers c
+    JOIN accounts a
+        ON c.customer_id = a.customer_id
+    JOIN transactions t
+        ON a.account_id = t.account_id
+)
+
+SELECT
+    customer_id,
+    customer_name,
+    fraud_transaction_id,
+    fraud_amount,
+    next_transaction_id,
+    next_transaction_amount
+FROM fraud_recovery_analysis
+WHERE is_fraud = TRUE
+  AND next_transaction_status = 'Success'
+  AND next_transaction_amount > fraud_amount * 2;
