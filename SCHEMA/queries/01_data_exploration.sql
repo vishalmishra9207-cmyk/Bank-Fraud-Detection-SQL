@@ -1199,3 +1199,181 @@ FROM fraud_recovery_analysis
 WHERE is_fraud = TRUE
   AND next_transaction_status = 'Success'
   AND next_transaction_amount > fraud_amount * 2;
+
+-- Q49 — Customer Fraud Risk Score
+-- Identify customers with a high risk of fraud.
+
+WITH fraud_risk_score AS (
+    SELECT
+        c.customer_id,
+        c.customer_name,
+
+        COUNT(
+            CASE
+                WHEN t.is_fraud = TRUE
+                THEN t.transaction_id
+            END
+        ) AS fraud_transaction_count,
+
+        SUM(
+            CASE
+                WHEN t.is_fraud = TRUE
+                THEN t.amount
+                ELSE 0
+            END
+        ) AS total_fraud_amount,
+
+        COUNT(
+            CASE
+                WHEN t.transaction_status = 'Success'
+                THEN t.transaction_id
+            END
+        ) AS successful_transaction_count,
+
+        SUM(t.amount) AS total_transaction_amount
+
+    FROM customers c
+    JOIN accounts a
+        ON c.customer_id = a.customer_id
+    JOIN transactions t
+        ON a.account_id = t.account_id
+
+    GROUP BY
+        c.customer_id,
+        c.customer_name
+),
+
+risk_calculation AS (
+    SELECT
+        *,
+        (CASE WHEN fraud_transaction_count >= 2 THEN 2 ELSE 0 END)
+        +
+        (CASE WHEN total_fraud_amount > 50000 THEN 2 ELSE 0 END)
+        +
+        (CASE WHEN successful_transaction_count > 10 THEN 1 ELSE 0 END)
+        +
+        (CASE WHEN total_transaction_amount > 500000 THEN 1 ELSE 0 END)
+        AS risk_score
+
+    FROM fraud_risk_score
+)
+
+SELECT
+    customer_id,
+    customer_name,
+    fraud_transaction_count,
+    total_fraud_amount,
+    successful_transaction_count,
+    total_transaction_amount,
+    risk_score,
+
+    CASE
+        WHEN risk_score >= 4 THEN 'High Risk'
+        WHEN risk_score >= 2 THEN 'Medium Risk'
+        ELSE 'Low Risk'
+    END AS risk_level
+
+FROM risk_calculation
+ORDER BY risk_score DESC;
+
+-- Q50 — Final Bank Fraud Case Study
+--  There are at least 2 fraudulent transactions.
+-- The total fraudulent amount exceeds ₹50,000.
+-- The transaction immediately following the latest fraudulent transaction is successful.
+-- The amount of that successful transaction is more than twice the amount of the latest fraudulent transaction.
+
+WITH customer_fraud_summary AS (
+    SELECT
+        c.customer_id,
+        c.customer_name,
+
+        COUNT(
+            CASE
+                WHEN t.is_fraud = TRUE
+                THEN t.transaction_id
+            END
+        ) AS fraud_transaction_count,
+
+        SUM(
+            CASE
+                WHEN t.is_fraud = TRUE
+                THEN t.amount
+                ELSE 0
+            END
+        ) AS total_fraud_amount
+
+    FROM customers c
+    JOIN accounts a
+        ON c.customer_id = a.customer_id
+    JOIN transactions t
+        ON a.account_id = t.account_id
+
+    GROUP BY
+        c.customer_id,
+        c.customer_name
+),
+
+transaction_sequence AS (
+    SELECT
+        c.customer_id,
+        c.customer_name,
+        t.transaction_id,
+        t.amount,
+        t.transaction_time,
+        t.is_fraud,
+        t.transaction_status,
+
+        LEAD(t.transaction_id) OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.transaction_time
+        ) AS next_transaction_id,
+
+        LEAD(t.amount) OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.transaction_time
+        ) AS next_transaction_amount,
+
+        LEAD(t.transaction_status) OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.transaction_time
+        ) AS next_transaction_status,
+
+        LEAD(t.transaction_time) OVER (
+            PARTITION BY c.customer_id
+            ORDER BY t.transaction_time
+        ) AS next_transaction_time
+
+    FROM customers c
+    JOIN accounts a
+        ON c.customer_id = a.customer_id
+    JOIN transactions t
+        ON a.account_id = t.account_id
+)
+
+SELECT
+    ts.customer_id,
+    ts.customer_name,
+    cfs.fraud_transaction_count,
+    cfs.total_fraud_amount,
+
+    ts.transaction_id AS fraud_transaction_id,
+    ts.amount AS fraud_amount,
+    ts.transaction_time AS fraud_transaction_time,
+
+    ts.next_transaction_id,
+    ts.next_transaction_amount,
+    ts.next_transaction_time
+
+FROM transaction_sequence ts
+JOIN customer_fraud_summary cfs
+    ON ts.customer_id = cfs.customer_id
+
+WHERE cfs.fraud_transaction_count >= 2
+  AND cfs.total_fraud_amount > 50000
+  AND ts.is_fraud = TRUE
+  AND ts.next_transaction_status = 'Success'
+  AND ts.next_transaction_amount > ts.amount * 2
+
+ORDER BY
+    ts.customer_id,
+    ts.transaction_time;
